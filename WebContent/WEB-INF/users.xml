@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <users>
 	<user>
-		<email/>
-		<name/>
-		<password/>
-		<Id/>
+		<email>John.Smith92@gmail.com</email>
+		<name>John Smith</name>
+		<password>John1234</password>
+<!--not sure about this	-->
+		<userPolls>
+			<pollId>4</pollId>
+			<pollId>2</pollId>
+		</userPolls>
+<!--  				   	-->
+	</user>
+	<user>
+		<email>Mary.Nguyen89@gmail.com</email>
+		<name>Mary Nguyen</name>
+		<password>MNguyen12</password>
+		<userPolls>
+			<pollId>1</pollId>
+			<pollId>3</pollId>
+		</userPolls>
 	</user>
 </users>
