@@ -2,7 +2,7 @@
 <users>
 	<user>
 		<email>John.Smith92@gmail.com</email>
-		<name>John Smith</name>
+		<username>John.Smith</username>
 		<password>John1234</password>
 <!--not sure about this	-->
 		<userPolls>
@@ -13,7 +13,7 @@
 	</user>
 	<user>
 		<email>Mary.Nguyen89@gmail.com</email>
-		<name>Mary Nguyen</name>
+		<name>MaryNguyen89</name>
 		<password>MNguyen12</password>
 		<userPolls>
 			<pollId>1</pollId>
