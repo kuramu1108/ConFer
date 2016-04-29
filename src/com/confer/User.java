@@ -11,6 +11,10 @@ public class User implements Serializable {
 	private String password;
 	private ArrayList<Poll> polls;
 	
+	public User()
+	{
+		
+	}
 	public User(String email, String username, String password) {
 		super();
 		this.email = email;
