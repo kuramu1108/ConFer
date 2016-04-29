@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<polls>
+
+	<poll>
+		<id>1</id>
+		<title>Weekly Meeting for WSD</title>
+		<creatorEmail>John.Smith92@gmail.com</creatorEmail>
+		<creationDate>26-04-2016</creationDate>
+		<status>open</status>
+		<location>B11.03.201</location>
+		<description>Let's decide our weekly meeting</description>
+		<timeOptions>
+			<time>8am</time>
+			<time>9am</time>
+			<time>10am</time>
+			<time>11am</time>
+		</timeOptions>
+		<responses>
+			<response>
+				<name>Calvin</name>
+				<timeChosen>
+					<time>8am</time>
+				</timeChosen>
+			</response>
+			<response>
+				<name>Johnlicious</name>
+				<timeChosen>
+					<time>8am</time>
+					<time>9am</time>
+				</timeChosen>	
+			</response>
+			<response>
+				<name>Peter</name>
+				<timeChosen>
+					<time>10am</time>
+				</timeChosen>
+			</response>
+		</responses>
+	</poll>
+	
+	
+</polls>
+
+
+
+
+
+
+
+
+
+
+
+
