@@ -6,9 +6,13 @@ import javax.xml.bind.annotation.*;
 
 import java.util.*;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "users")
 public class Users implements Serializable {
-	private ArrayList<User> users;
+	@XmlElement(name = "count")
 	private int count;
+	@XmlElement(name = "user")
+	private ArrayList<User> users;
 	
 	public Users() {
 		users = new ArrayList<User>();
@@ -34,5 +38,13 @@ public class Users implements Serializable {
                 return user; // Login correct. Return this user.
         }
         return null; // Login incorrect. Return null.
+    }
+    
+    public ArrayList<String> getUsersPollIDs(String email){
+    	for (User user : users){
+    		if (user.getEmail().equals(email))
+    			return user.getPollIDs();
+    	}
+    	return null;
     }
 }

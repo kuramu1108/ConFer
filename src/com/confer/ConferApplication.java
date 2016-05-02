@@ -33,4 +33,15 @@ public class ConferApplication {
 		this.polls = polls;
 	}
 	
+	public ArrayList<Poll> getUsersPolls(String email){
+		ArrayList<String> pollIDs = users.getUsersPollIDs(email);
+		if (pollIDs == null)
+			return null;
+		else
+		{
+			ArrayList<Poll> result = polls.getUsersPolls(pollIDs);
+			return result;
+		}
+	}
+	
 }
