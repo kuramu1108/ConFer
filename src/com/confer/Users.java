@@ -6,9 +6,13 @@ import javax.xml.bind.annotation.*;
 
 import java.util.*;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "users")
 public class Users implements Serializable {
-	private ArrayList<User> users;
+	@XmlElement(name = "count")
 	private int count;
+	@XmlElement(name = "user")
+	private ArrayList<User> users;
 	
 	public Users() {
 		users = new ArrayList<User>();

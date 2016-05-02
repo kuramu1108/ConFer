@@ -5,8 +5,8 @@ import javax.xml.bind.annotation.*;
 import java.util.*;
 
 public class Polls implements Serializable {
-	private Hashtable<String, Poll> polls;
 	private int count;
+	private Hashtable<String, Poll> polls;
 
 	public Polls() {
 		polls = new Hashtable<String, Poll>();
@@ -31,6 +31,21 @@ public class Polls implements Serializable {
 	public ArrayList<Poll> getUsersPolls(ArrayList<String> pollIDs)
 	{
 		ArrayList<Poll> result = new ArrayList<Poll>();
+		for (String id : pollIDs)
+		{
+			if (polls.contains(id)) 
+			{
+				result.add(polls.get(id));
+			}
+		}
 		return result;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 }

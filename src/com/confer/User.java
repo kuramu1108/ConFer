@@ -2,13 +2,18 @@ package com.confer;
 
 import java.io.Serializable;
 import java.util.*;
-
 import javax.xml.bind.annotation.*;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class User implements Serializable {
+	@XmlElement(name = "email")
 	private String email;
+	@XmlElement(name = "username")
 	private String username;
+	@XmlElement(name = "password")
 	private String password;
+	@XmlElementWrapper(name = "pollIDs")
+	@XmlElement(name = "pollID")
 	private ArrayList<String> pollIDs;
 	
 	public User()
