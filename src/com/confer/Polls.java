@@ -37,8 +37,10 @@ public class Polls implements Serializable {
 		ArrayList<Poll> result = new ArrayList<Poll>();
 		for (String id : pollIDs)
 		{
-			if (polls.contains(id)) 
+			System.out.println(id);
+			if (polls.containsKey(id)) 
 			{
+				System.out.println(id);
 				result.add(polls.get(id));
 			}
 		}
