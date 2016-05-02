@@ -4,8 +4,12 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.*;
 import java.util.*;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "polls")
 public class Polls implements Serializable {
+	@XmlElement(name = "count")
 	private int count;
+	@XmlElementWrapper(name = "list")
 	private Hashtable<String, Poll> polls;
 
 	public Polls() {
@@ -33,8 +37,10 @@ public class Polls implements Serializable {
 		ArrayList<Poll> result = new ArrayList<Poll>();
 		for (String id : pollIDs)
 		{
-			if (polls.contains(id)) 
+			System.out.println(id);
+			if (polls.containsKey(id)) 
 			{
+				System.out.println(id);
 				result.add(polls.get(id));
 			}
 		}
