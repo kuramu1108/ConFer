@@ -35,4 +35,12 @@ public class Users implements Serializable {
         }
         return null; // Login incorrect. Return null.
     }
+    
+    public ArrayList<Poll> getUsersPollIDs(String email){
+    	for (User user : users){
+    		if (user.getEmail().equals(email))
+    			return user.getPolls();
+    	}
+    	return null;
+    }
 }

@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.*;
 import java.util.*;
 
 public class Poll implements Serializable {
-	private int id;
+	private String id;
 	private String title;
 	private String creatorEmail;
 	private String creationDate;
@@ -17,7 +17,7 @@ public class Poll implements Serializable {
 	private ArrayList<String> timeOptions;
 	private ArrayList<Response> responses;
 	
-	public Poll(int id, String title, String creatorEmail, String creationDate,
+	public Poll(String id, String title, String creatorEmail, String creationDate,
 			String status, String location, String description) {
 		super();
 		this.id = id;
@@ -31,11 +31,11 @@ public class Poll implements Serializable {
 		responses = new ArrayList<Response>();
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
