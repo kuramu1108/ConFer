@@ -4,8 +4,12 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.*;
 import java.util.*;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "polls")
 public class Polls implements Serializable {
+	@XmlElement(name = "count")
 	private int count;
+	@XmlElementWrapper(name = "list")
 	private Hashtable<String, Poll> polls;
 
 	public Polls() {
