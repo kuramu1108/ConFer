@@ -34,11 +34,14 @@ public class ConferApplication {
 	}
 	
 	public ArrayList<Poll> getUsersPolls(String email){
-		ArrayList<Poll> polls = users.getUsersPollIDs(email);
-		if (polls == null)
+		ArrayList<String> pollIDs = users.getUsersPollIDs(email);
+		if (pollIDs == null)
 			return null;
 		else
-			return polls;
+		{
+			ArrayList<Poll> result = polls.getUsersPolls(pollIDs);
+			return result;
+		}
 	}
 	
 }

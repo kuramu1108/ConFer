@@ -9,7 +9,7 @@ public class User implements Serializable {
 	private String email;
 	private String username;
 	private String password;
-	private ArrayList<Poll> polls;
+	private ArrayList<String> pollIDs;
 	
 	public User()
 	{
@@ -20,7 +20,7 @@ public class User implements Serializable {
 		this.email = email;
 		this.username = username;
 		this.password = password;
-		this.polls = new ArrayList<Poll>();
+		this.pollIDs = new ArrayList<String>();
 	}
 	
 	public String getEmail() {
@@ -47,18 +47,18 @@ public class User implements Serializable {
 		this.password = password;
 	}
 	
-	public void addPoll(Poll poll)
+	public void addPoll(String pollID)
 	{
-		polls.add(poll);
+		pollIDs.add(pollID);
 	}
 	
-	public void removePoll(Poll poll)
+	public void removePoll(String pollID)
 	{
-		polls.remove(poll);
+		pollIDs.remove(pollID);
 	}
 	
-	public ArrayList<Poll> getPolls()
+	public ArrayList<String> getPollIDs()
 	{
-		return polls;
+		return pollIDs;
 	}
 }
