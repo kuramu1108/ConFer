@@ -25,10 +25,12 @@ public class Users implements Serializable {
 	
     public void addUser(User user) {
         list.add(user);
+        count++;
     }
     
     public void removeUser(User user) {
         list.remove(user);
+        count--;
     }
     
     public User login(String email, String password) {

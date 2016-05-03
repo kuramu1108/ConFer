@@ -1,55 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <polls>
-
-	<poll>
-		<id>1</id>
-		<title>Weekly Meeting for WSD</title>
-		<creatorEmail>John.Smith92@gmail.com</creatorEmail>
-		<creationDate>26-04-2016</creationDate>
-		<status>open</status>
-		<location>B11.03.201</location>
-		<description>Let's decide our weekly meeting</description>
-		<timeOptions>
-			<time>8am</time>
-			<time>9am</time>
-			<time>10am</time>
-			<time>11am</time>
-		</timeOptions>
-		<responses>
-			<response>
-				<name>Calvin</name>
-				<timeChosen>
-					<time>8am</time>
-				</timeChosen>
-			</response>
-			<response>
-				<name>Johnlicious</name>
-				<timeChosen>
-					<time>8am</time>
-					<time>9am</time>
-				</timeChosen>	
-			</response>
-			<response>
-				<name>Peter</name>
-				<timeChosen>
-					<time>10am</time>
-				</timeChosen>
-			</response>
-		</responses>
-	</poll>
-	
-	
+    <count>1</count>
+    <list>
+        <entry>
+            <key>1</key>
+            <value>
+                <id>1</id>
+                <title>First meeting</title>
+                <creatorEmail>colagarychen@gmail.com</creatorEmail>
+                <creatioDate>01/04/2016</creatioDate>
+                <status>OPEN</status>
+                <location>B11</location>
+                <description>meeting for WSD</description>
+                <timeOptions>
+                    <timeOption>04/05/2016 6:00</timeOption>
+                    <timeOption>04/05/2016 10:00</timeOption>
+                    <timeOption>04/05/2016 14:00</timeOption>
+                </timeOptions>
+                <responses>
+                    <name>Raymond</name>
+                    <times>
+                        <timeSelected>04/05/2016 6:00</timeSelected>
+                        <timeSelected>04/05/2016 14:00</timeSelected>
+                    </times>
+                </responses>
+            </value>
+        </entry>
+    </list>
 </polls>
-
-
-
-
-
-
-
-
-
-
-
-

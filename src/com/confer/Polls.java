@@ -45,11 +45,13 @@ public class Polls implements Serializable {
 	public void addPoll(Poll poll)
 	{
 		list.put(poll.getId(), poll);
+		count++;
 	}
 	
 	public void removePoll(Poll poll)
 	{
 		list.remove(poll.getId());
+		count--;
 	}
 	
 	public Hashtable<String, Poll> getList()

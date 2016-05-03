@@ -7,7 +7,7 @@ import javax.xml.bind.*;
 public class TestJAXB implements Serializable {
 	public static void main(String[] args) throws Exception {
 		boolean testUser = false;
-		boolean testPoll = false;
+		boolean testPoll = true;
 		if (testUser) {
 			Users users = new Users();
 			User user = new User("colagarychen@gmail.com", "pohao", "abcd1234");
