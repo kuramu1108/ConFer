@@ -25,7 +25,8 @@ public class Poll implements Serializable {
 	@XmlElementWrapper(name = "timeOptions")
 	@XmlElement(name = "timeOption")
 	private ArrayList<String> timeOptions;
-	@XmlElement(name = "responses")
+	@XmlElementWrapper(name = "responses")
+	@XmlElement(name = "response")
 	private ArrayList<Response> responses;
 	
 	public Poll(String id, String title, String creatorEmail, String creationDate,

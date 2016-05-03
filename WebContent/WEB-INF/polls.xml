@@ -18,11 +18,20 @@
                     <timeOption>04/05/2016 14:00</timeOption>
                 </timeOptions>
                 <responses>
-                    <name>Raymond</name>
-                    <times>
-                        <timeSelected>04/05/2016 6:00</timeSelected>
-                        <timeSelected>04/05/2016 14:00</timeSelected>
-                    </times>
+                    <response>
+                        <name>Raymond</name>
+                        <times>
+                            <timeSelected>04/05/2016 6:00</timeSelected>
+                            <timeSelected>04/05/2016 14:00</timeSelected>
+                        </times>
+                    </response>
+                    <response>
+                        <name>Darren</name>
+                        <times>
+                            <timeSelected>04/05/2016 6:00</timeSelected>
+                            <timeSelected>04/05/2016 14:00</timeSelected>
+                        </times>
+                    </response>
                 </responses>
             </value>
         </entry>
