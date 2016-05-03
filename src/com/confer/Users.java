@@ -12,28 +12,30 @@ public class Users implements Serializable {
 	@XmlElement(name = "count")
 	private int count;
 	@XmlElement(name = "user")
-	private ArrayList<User> users;
+	private ArrayList<User> list;
 	
 	public Users() {
-		users = new ArrayList<User>();
+		list = new ArrayList<User>();
 		count = 0;
 	}
 
-	public ArrayList<User> getUsers() {
-        return users;
+	public ArrayList<User> getList() {
+        return list;
     }
 	
     public void addUser(User user) {
-        users.add(user);
+        list.add(user);
+        count++;
     }
     
     public void removeUser(User user) {
-        users.remove(user);
+        list.remove(user);
+        count--;
     }
     
     public User login(String email, String password) {
         // For each user in the list...
-        for (User user : users) {
+        for (User user : list) {
             if (user.getEmail().equals(email) && user.getPassword().equals(password))
                 return user; // Login correct. Return this user.
         }
@@ -41,7 +43,7 @@ public class Users implements Serializable {
     }
     
     public ArrayList<String> getUsersPollIDs(String email){
-    	for (User user : users){
+    	for (User user : list){
     		if (user.getEmail().equals(email))
     			return user.getPollIDs();
     	}
