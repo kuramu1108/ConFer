@@ -14,7 +14,7 @@ public class Poll implements Serializable {
 	private String title;
 	@XmlElement(name = "creatorEmail")
 	private String creatorEmail;
-	@XmlElement(name = "creatioDate")
+	@XmlElement(name = "creationDate")
 	private String creationDate;
 	@XmlElement(name = "status")
 	private String status;
