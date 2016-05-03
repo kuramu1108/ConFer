@@ -31,10 +31,14 @@ public class TestJAXB implements Serializable {
 			poll.addTimeOption("04/05/2016 6:00");
 			poll.addTimeOption("04/05/2016 10:00");
 			poll.addTimeOption("04/05/2016 14:00");
-			Response response = new Response("Raymond");
-			response.addTimeSelected("04/05/2016 6:00");
-			response.addTimeSelected("04/05/2016 14:00");
-			poll.addResponse(response);
+			Response response1 = new Response("Raymond");
+			response1.addTimeSelected("04/05/2016 6:00");
+			response1.addTimeSelected("04/05/2016 14:00");
+			poll.addResponse(response1);
+			Response response2 = new Response("Darren");
+			response2.addTimeSelected("04/05/2016 6:00");
+			response2.addTimeSelected("04/05/2016 14:00");
+			poll.addResponse(response2);
 			polls.addPoll(poll);
 			// Boilerplate code to convert objects to XML...
 			JAXBContext jc = JAXBContext.newInstance(Polls.class);
