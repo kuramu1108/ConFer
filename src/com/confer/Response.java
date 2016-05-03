@@ -6,14 +6,18 @@ import javax.xml.bind.annotation.*;
 
 import java.util.*;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Response implements Serializable {
+	@XmlElement(name = "name")
 	private String name;
-	private ArrayList<String> timeOptions;
+	@XmlElementWrapper(name = "times")
+	@XmlElement(name = "timeSelected")
+	private ArrayList<String> timeSelected;
 	
 	public Response(String name) {
 		super();
 		this.name = name;
-		timeOptions = new ArrayList<String>();
+		timeSelected = new ArrayList<String>();
 	}
 	
 	public String getName() {
@@ -24,11 +28,11 @@ public class Response implements Serializable {
 		this.name = name;
 	}
 	
-	public ArrayList<String> getTimeOptions() {
-		return timeOptions;
+	public ArrayList<String> getTimeSelected() {
+		return timeSelected;
 	}
 	
-	public void addTimeOptions(String timeOption) {
-		timeOptions.add(timeOption);
+	public void addTimeSelected(String timeSelected) {
+		this.timeSelected.add(timeSelected);
 	}
 }

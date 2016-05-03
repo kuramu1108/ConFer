@@ -8,6 +8,24 @@ public class ConferApplication {
 	private Users users;
 	private Polls polls;
 	
+	public ArrayList<Poll> getUsersPolls(String email)
+	{
+		ArrayList<String> pollIDs = users.getUsersPollIDs(email);
+		if (pollIDs == null)
+			return null;
+		else
+		{
+			ArrayList<Poll> result = polls.getUsersPolls(pollIDs);
+			return result;
+		}
+	}
+	
+	public ArrayList<Poll> getOpenPolls()
+	{
+		ArrayList<Poll> result = polls.getOpenPolls();
+		return result;
+	}
+	
 	public String getUserFilePath() {
 		return userFilePath;
 	}
@@ -32,5 +50,4 @@ public class ConferApplication {
 	public void setPolls(Polls polls) {
 		this.polls = polls;
 	}
-	
 }
