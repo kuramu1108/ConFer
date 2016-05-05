@@ -6,8 +6,8 @@
         <username>pohao</username>
         <password>abcd1234</password>
         <pollIDs>
-            <pollID>c0001</pollID>
-            <pollID>c0002</pollID>
+            <pollID>0</pollID>
+            <pollID>1</pollID>
         </pollIDs>
     </user>
     <user>
