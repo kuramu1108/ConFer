@@ -66,14 +66,26 @@ public class ConferApplication {
 	public String getUserFilePath() {
 		return userFilePath;
 	}
-	public void setUserFilePath(String userFilePath) {
+	public void setUserFilePath(String userFilePath) throws Exception{
 		this.userFilePath = userFilePath;
+		JAXBContext jc = JAXBContext.newInstance(Users.class);
+		Unmarshaller u = jc.createUnmarshaller();
+		
+		FileInputStream fin = new FileInputStream(userFilePath);
+		users = (Users)u.unmarshal(fin);
+		fin.close();
 	}
 	public String getPollFilePath() {
 		return pollFilePath;
 	}
-	public void setPollFilePath(String pollFilePath) {
+	public void setPollFilePath(String pollFilePath) throws Exception{
 		this.pollFilePath = pollFilePath;
+		JAXBContext jc = JAXBContext.newInstance(Polls.class);
+		Unmarshaller u = jc.createUnmarshaller();
+		
+		FileInputStream fin = new FileInputStream(pollFilePath);
+		polls = (Polls)u.unmarshal(fin);
+		fin.close();
 	}
 	public Users getUsers() {
 		return users;
