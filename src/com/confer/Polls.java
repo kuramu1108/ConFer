@@ -17,26 +17,31 @@ public class Polls implements Serializable {
 		count = 0;
 	}
 	
-	public ArrayList<Poll> getOpenPolls()
+	public Polls(Hashtable<String, Poll> list) {
+		this.list = list;
+		count = list.size();
+	}
+	
+	public Hashtable<String, Poll> getOpenPolls()
 	{
-		ArrayList<Poll> result = new ArrayList<Poll>();
+		Hashtable<String, Poll> result = new Hashtable<String, Poll>();
 		for (Map.Entry<String, Poll> entry: list.entrySet())
 		{
 			Poll poll = entry.getValue();
 			if (poll.getStatus().equals("OPEN"));
-				result.add(poll);
+				result.put(entry.getKey(), poll);
 		}
 		return result;
 	}
 	
-	public ArrayList<Poll> getUsersPolls(ArrayList<String> pollIDs)
+	public Hashtable<String, Poll> getUsersPolls(ArrayList<String> pollIDs)
 	{
-		ArrayList<Poll> result = new ArrayList<Poll>();
+		Hashtable<String, Poll> result = new Hashtable<String, Poll>();
 		for (String id : pollIDs)
 		{
 			if (list.containsKey(id)) 
 			{
-				result.add(list.get(id));
+				result.put(id, list.get(id));
 			}
 		}
 		return result;
