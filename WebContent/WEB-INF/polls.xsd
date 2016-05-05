@@ -45,7 +45,7 @@
 										<xs:element name="value">
 											<xs:complexType>
 												<xs:sequence>
-													<xs:element name="id" type="xs:string" />
+													<xs:element name="id" type="xs:integer" />
 													<xs:element name="title" type="xs:string" />
 													<xs:element name="creatorEmail" type="email" />
 													<xs:element name="creationDate" type="date" />
