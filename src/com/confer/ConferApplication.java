@@ -2,6 +2,10 @@ package com.confer;
 
 import java.util.*;
 
+import javax.xml.bind.*;
+
+import java.io.*;
+
 public class ConferApplication {
 	private String userFilePath;
 	private String pollFilePath;
@@ -24,6 +28,39 @@ public class ConferApplication {
 	{
 		ArrayList<Poll> result = polls.getOpenPolls();
 		return result;
+	}
+	
+	public void addPoll(String title, String creatorEmail, String creationDate,
+			String status, String location, String description) throws Exception
+	{
+		Poll poll = new Poll(Integer.toString(polls.getCount()), title, creatorEmail, creationDate, status, location, description);
+		polls.addPoll(poll);
+		marshallPolls();
+	}
+	
+	public void addUser(String email, String username, String password) throws Exception
+	{
+		User user = new User(email, username, password);
+		users.addUser(user);
+		marshallUsers();
+	}
+	
+	private void marshallPolls() throws Exception
+	{
+		JAXBContext jc = JAXBContext.newInstance(Polls.class);
+		Marshaller m = jc.createMarshaller();
+		
+		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		m.marshal(polls, new FileOutputStream(pollFilePath));
+	}
+	
+	private void marshallUsers() throws Exception
+	{
+		JAXBContext jc = JAXBContext.newInstance(Users.class);
+		Marshaller m = jc.createMarshaller();
+		
+		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		m.marshal(users, new FileOutputStream(userFilePath));
 	}
 	
 	public String getUserFilePath() {
