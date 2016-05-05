@@ -114,4 +114,8 @@ public class Poll implements Serializable {
 	public void addResponse(Response response) {
 		responses.add(response);
 	}
+	
+	public void removeResponse(Response response) {
+		responses.remove(response);
+	}
 }
