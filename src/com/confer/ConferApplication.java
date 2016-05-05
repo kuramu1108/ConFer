@@ -12,21 +12,21 @@ public class ConferApplication {
 	private Users users;
 	private Polls polls;
 	
-	public ArrayList<Poll> getUsersPolls(String email)
+	public Hashtable<String, Poll> getUsersPolls(String email)
 	{
 		ArrayList<String> pollIDs = users.getUsersPollIDs(email);
 		if (pollIDs == null)
 			return null;
 		else
 		{
-			ArrayList<Poll> result = polls.getUsersPolls(pollIDs);
+			Hashtable<String, Poll> result = polls.getUsersPolls(pollIDs);
 			return result;
 		}
 	}
 	
-	public ArrayList<Poll> getOpenPolls()
+	public Hashtable<String, Poll> getOpenPolls()
 	{
-		ArrayList<Poll> result = polls.getOpenPolls();
+		Hashtable<String, Poll> result = polls.getOpenPolls();
 		return result;
 	}
 	
