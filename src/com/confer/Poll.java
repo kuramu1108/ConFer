@@ -6,18 +6,30 @@ import javax.xml.bind.annotation.*;
 
 import java.util.*;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Poll implements Serializable {
-	private int id;
+	@XmlElement(name = "id")
+	private String id;
+	@XmlElement(name = "title")
 	private String title;
+	@XmlElement(name = "creatorEmail")
 	private String creatorEmail;
+	@XmlElement(name = "creationDate")
 	private String creationDate;
+	@XmlElement(name = "status")
 	private String status;
+	@XmlElement(name = "location")
 	private String location;
+	@XmlElement(name = "description")
 	private String description;
+	@XmlElementWrapper(name = "timeOptions")
+	@XmlElement(name = "timeOption")
 	private ArrayList<String> timeOptions;
+	@XmlElementWrapper(name = "responses")
+	@XmlElement(name = "response")
 	private ArrayList<Response> responses;
 	
-	public Poll(int id, String title, String creatorEmail, String creationDate,
+	public Poll(String id, String title, String creatorEmail, String creationDate,
 			String status, String location, String description) {
 		super();
 		this.id = id;
@@ -31,11 +43,11 @@ public class Poll implements Serializable {
 		responses = new ArrayList<Response>();
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -91,7 +103,7 @@ public class Poll implements Serializable {
 		return timeOptions;
 	}
 
-	public void addTimeOptions(String timeOption) {
+	public void addTimeOption(String timeOption) {
 		timeOptions.add(timeOption);
 	}
 
@@ -99,7 +111,11 @@ public class Poll implements Serializable {
 		return responses;
 	}
 
-	public void addResponses(Response response) {
+	public void addResponse(Response response) {
 		responses.add(response);
+	}
+	
+	public void removeResponse(Response response) {
+		responses.remove(response);
 	}
 }

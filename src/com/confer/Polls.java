@@ -4,25 +4,71 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.*;
 import java.util.*;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "polls")
 public class Polls implements Serializable {
-	private ArrayList<Poll> polls;
+	@XmlElement(name = "count")
+	private int count;
+	@XmlElementWrapper(name = "list")
+	private Hashtable<String, Poll> list;
 
 	public Polls() {
-		polls = new ArrayList<Poll>();
+		list = new Hashtable<String, Poll>();
+		count = 0;
+	}
+	
+	public Polls(Hashtable<String, Poll> list) {
+		this.list = list;
+		count = list.size();
+	}
+	
+	public Hashtable<String, Poll> getOpenPolls()
+	{
+		Hashtable<String, Poll> result = new Hashtable<String, Poll>();
+		for (Map.Entry<String, Poll> entry: list.entrySet())
+		{
+			Poll poll = entry.getValue();
+			if (poll.getStatus().equals("OPEN"));
+				result.put(entry.getKey(), poll);
+		}
+		return result;
+	}
+	
+	public Hashtable<String, Poll> getUsersPolls(ArrayList<String> pollIDs)
+	{
+		Hashtable<String, Poll> result = new Hashtable<String, Poll>();
+		for (String id : pollIDs)
+		{
+			if (list.containsKey(id)) 
+			{
+				result.put(id, list.get(id));
+			}
+		}
+		return result;
 	}
 	
 	public void addPoll(Poll poll)
 	{
-		polls.add(poll);
+		list.put(poll.getId(), poll);
+		count++;
 	}
 	
 	public void removePoll(Poll poll)
 	{
-		polls.remove(poll);
+		list.remove(poll.getId());
+		count--;
 	}
 	
-	public ArrayList<Poll> getPolls()
+	public Hashtable<String, Poll> getList()
 	{
-		return polls;
+		return list;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 }

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.confer.com/polls" xmlns="http://www.confer.com/polls"
+	elementFormDefault="qualified">
+
+	<!-- Insert your type declarations here -->
+	<xs:simpleType name="status">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="OPEN|CLOSE" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="date">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{1,2}/\d{1,2}/\d{1,4}" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="fullName">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([A-Z][a-z]+ *)+" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="email">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[a-zA-Z\._]+@[a-z]+(\.[a-z]+)+" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- Insert your element declarations here -->
+
+
+	<xs:element name="polls">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="count" type="xs:integer" />
+				<xs:element name="list" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="key" type="xs:integer" />
+										<xs:element name="value">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="id" type="xs:integer" />
+													<xs:element name="title" type="xs:string" />
+													<xs:element name="creatorEmail" type="email" />
+													<xs:element name="creationDate" type="date" />
+													<xs:element name="status" type="status" />
+													<xs:element name="location" type="xs:string" />
+													<xs:element name="description" type="xs:string" />
+													<xs:element name="timeOptions">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="timeOption" minOccurs="0"
+																	maxOccurs="unbounded" type="datetime" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="responses">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="response" minOccurs="0"
+																	maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="name" type="fullName" />
+																			<xs:element name="times">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="timeSelected"
+																						minOccurs="1" maxOccurs="unbounded" type="time" />
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+
+	</xs:element>
+
+</xs:schema>

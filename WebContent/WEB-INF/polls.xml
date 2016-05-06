@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<polls>
+    <count>2</count>
+    <list>
+        <entry>
+            <key>1</key>
+            <value>
+                <id>1</id>
+                <title>Second meeting</title>
+                <creatorEmail>colagarychen@gmail.com</creatorEmail>
+                <creationDate>01/04/2016</creationDate>
+                <status>OPEN</status>
+                <location>B04</location>
+                <description>meeting for WSD</description>
+                <timeOptions>
+                    <timeOption>04/05/2016 6:00</timeOption>
+                    <timeOption>04/05/2016 10:00</timeOption>
+                    <timeOption>04/05/2016 14:00</timeOption>
+                </timeOptions>
+                <responses>
+                    <response>
+                        <name>Raymond</name>
+                        <times>
+                            <timeSelected>04/05/2016 6:00</timeSelected>
+                            <timeSelected>04/05/2016 14:00</timeSelected>
+                        </times>
+                    </response>
+                </responses>
+            </value>
+        </entry>
+        <entry>
+            <key>0</key>
+            <value>
+                <id>0</id>
+                <title>First meeting</title>
+                <creatorEmail>colagarychen@gmail.com</creatorEmail>
+                <creationDate>01/04/2016</creationDate>
+                <status>OPEN</status>
+                <location>B11</location>
+                <description>meeting for WSD</description>
+                <timeOptions>
+                    <timeOption>04/05/2016 6:00</timeOption>
+                    <timeOption>04/05/2016 10:00</timeOption>
+                    <timeOption>04/05/2016 14:00</timeOption>
+                </timeOptions>
+                <responses>
+                    <response>
+                        <name>Raymond</name>
+                        <times>
+                            <timeSelected>04/05/2016 6:00</timeSelected>
+                            <timeSelected>04/05/2016 14:00</timeSelected>
+                        </times>
+                    </response>
+                </responses>
+            </value>
+        </entry>
+    </list>
+</polls>
