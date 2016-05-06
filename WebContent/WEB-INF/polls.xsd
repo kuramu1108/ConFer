@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="http://www.example.org/polls" xmlns:tns="http://www.example.org/polls"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.confer.com/polls" xmlns="http://www.confer.com/polls"
 	elementFormDefault="qualified">
 
 	<!-- Insert your type declarations here -->
@@ -56,7 +56,7 @@
 														<xs:complexType>
 															<xs:sequence>
 																<xs:element name="timeOption" minOccurs="0"
-																	maxOccurs="unbounded" type="time" />
+																	maxOccurs="unbounded" type="datetime" />
 															</xs:sequence>
 														</xs:complexType>
 													</xs:element>
@@ -96,4 +96,4 @@
 
 	</xs:element>
 
-</schema>
+</xs:schema>
