@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/users"
-	xmlns:tns="http://www.example.org/users" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/users"
+	xmlns="http://www.example.org/users" elementFormDefault="qualified">
 
 	<!-- Insert your type declarations here -->
 
@@ -48,4 +48,4 @@
 				</xs:element>
 			</xs:sequence>
 		</xs:complexType>
-</schema>
+</xs:schema>
