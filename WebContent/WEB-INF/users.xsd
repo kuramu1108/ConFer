@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/users"
-	xmlns="http://www.example.org/users" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.confer.com/users"
+	xmlns="http://www.confer.com/users" elementFormDefault="qualified">
 
 	<!-- Insert your type declarations here -->
 
@@ -18,7 +18,7 @@
 
 	<xs:simpleType name="email">
 		<xs:restriction base="xs:string">
-			<xs:pattern value="[a-zA-Z\._]+@[a-z]+(\.[a-z]+)+" />
+			<xs:pattern value="[a-zA-Z\._0-9]+@[a-z]+(\.[a-z]+)+" />
 		</xs:restriction>
 	</xs:simpleType>
 
@@ -48,4 +48,5 @@
 				</xs:element>
 			</xs:sequence>
 		</xs:complexType>
+	</xs:element>
 </xs:schema>
