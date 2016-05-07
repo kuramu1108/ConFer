@@ -1,5 +1,7 @@
-<%@ page contentType="application/xml"%><?xml version="1.0" encoding="UTF-8"?>
-<%@ page import="java.util.*, com.confer.*"%><?xml-stylesheet type="text/xsl" href="static/index.xsl"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="static/index.xsl"?>
+<%@ page contentType="application/xml"%>
+<%@ page import="java.util.*, com.confer.*"%>
 
 <!-- ?xml-stylesheet type="text/xsl" href="page.xsl"? -->
  

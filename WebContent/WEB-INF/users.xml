@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<users xmlns="http://www.confer.com/users" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.confer.com/users users.xsd">
+<users>
+<!-- <users xmlns="http://www.confer.com/users" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.confer.com/users users.xsd"> -->
     <count>2</count>
     <user>
         <email>colagarychen@gmail.com</email>
