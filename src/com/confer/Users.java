@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.*;
 import java.util.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "users")
+@XmlRootElement(name = "users", namespace = "http://www.confer.com/users")
 public class Users implements Serializable {
 	@XmlElement(name = "count")
 	private int count;

@@ -29,6 +29,9 @@ public class Poll implements Serializable {
 	@XmlElement(name = "response")
 	private ArrayList<Response> responses;
 	
+	public Poll() {
+		
+	}
 	public Poll(String id, String title, String creatorEmail, String creationDate,
 			String status, String location, String description) {
 		super();
@@ -43,6 +46,24 @@ public class Poll implements Serializable {
 		responses = new ArrayList<Response>();
 	}
 
+	public Poll(String id, String title, String creatorEmail,
+			String creationDate, String status, String location,
+			String description, ArrayList<String> timeOptions,
+			ArrayList<Response> responses) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.creatorEmail = creatorEmail;
+		this.creationDate = creationDate;
+		this.status = status;
+		this.location = location;
+		this.description = description;
+		this.timeOptions = timeOptions;
+		this.responses = responses;
+	}
+
+
+	// Accessor, mutator and list element add/remove =============================
 	public String getId() {
 		return id;
 	}
