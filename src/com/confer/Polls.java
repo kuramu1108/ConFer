@@ -28,7 +28,7 @@ public class Polls implements Serializable {
 		for (Map.Entry<String, Poll> entry: list.entrySet())
 		{
 			Poll poll = entry.getValue();
-			if (poll.getStatus().equals("OPEN"));
+			if (poll.getStatus().equals("OPEN"))
 				result.put(entry.getKey(), poll);
 		}
 		return result;
