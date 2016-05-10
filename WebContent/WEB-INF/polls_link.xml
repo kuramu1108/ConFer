@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<polls>
+<polls xmlns="http://www.confer.com/polls" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.confer.com/polls polls.xsd">
 	<count>2</count>
 	<list>
 		<entry>

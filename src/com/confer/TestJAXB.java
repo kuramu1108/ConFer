@@ -68,7 +68,7 @@ public class TestJAXB implements Serializable {
 			polls.addPoll(poll);
 			
 			Poll poll2 = new Poll(Integer.toString(polls.getCount()), "Second meeting",
-					"colagarychen@gmail.com", "01/04/2016", "OPEN", "B04",
+					"colagarychen@gmail.com", "01/04/2016", "CLOSE", "B04",
 					"meeting for WSD");
 			poll2.addTimeOption("04/05/2016 6:00");
 			poll2.addTimeOption("04/05/2016 10:00");
@@ -89,24 +89,25 @@ public class TestJAXB implements Serializable {
 //					System.out.println(entry.getValue().getTitle());
 //				}
 //			}
-			Polls result = new Polls(search);
+//			Polls result = new Polls(search);
 //			System.out.println("complete");
+			Polls result = new Polls(confer.getOpenPolls());
 			JAXBContext jc = JAXBContext.newInstance(Polls.class);
 			StringWriter sw = new StringWriter();
 			Marshaller m = jc.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			m.marshal(result, sw);
+			m.marshal(result, System.out);
 			//System.out.println(sw.toString());
 			
-			JAXBContext jc2 = JAXBContext.newInstance(Users.class);
-			Marshaller m2 = jc2.createMarshaller();
-			m2.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			m2.marshal(users, System.out);
-			
-			JAXBContext jc3 = JAXBContext.newInstance(Polls.class);
-			Marshaller m3 = jc3.createMarshaller();
-			m3.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			m3.marshal(polls, System.out);
+//			JAXBContext jc2 = JAXBContext.newInstance(Users.class);
+//			Marshaller m2 = jc2.createMarshaller();
+//			m2.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+//			m2.marshal(users, System.out);
+//			
+//			JAXBContext jc3 = JAXBContext.newInstance(Polls.class);
+//			Marshaller m3 = jc3.createMarshaller();
+//			m3.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+//			m3.marshal(polls, System.out);
 			
 		}
 	}
