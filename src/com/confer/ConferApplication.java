@@ -30,10 +30,10 @@ public class ConferApplication {
 		return result;
 	}
 	
-	public void addPoll(String title, String creatorEmail, String creationDate,
+	public void addPoll(String title, String creatorEmail, String creatorName, String creationDate,
 			String status, String location, String description) throws Exception
 	{
-		Poll poll = new Poll(Integer.toString(polls.getCount()), title, creatorEmail, creationDate, status, location, description);
+		Poll poll = new Poll(Integer.toString(polls.getCount()), title, creatorEmail, creatorName, creationDate, status, location, description);
 		polls.addPoll(poll);
 		marshallPolls();
 	}
