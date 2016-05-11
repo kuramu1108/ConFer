@@ -54,6 +54,7 @@
 													<xs:element name="id" type="xs:integer" />
 													<xs:element name="title" type="xs:string" />
 													<xs:element name="creatorEmail" type="email" />
+													<xs:element name="creatorName" type="xs:string"/>
 													<xs:element name="creationDate" type="date" />
 													<xs:element name="status" type="status" />
 													<xs:element name="location" type="xs:string" />
