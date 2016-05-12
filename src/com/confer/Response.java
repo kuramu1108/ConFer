@@ -14,12 +14,23 @@ public class Response implements Serializable {
 	@XmlElement(name = "timeSelected")
 	private ArrayList<String> timeSelected;
 	
+	public Response()
+	{
+		
+	}
+	
 	public Response(String name) {
 		super();
 		this.name = name;
 		timeSelected = new ArrayList<String>();
 	}
 	
+	public Response(String name, ArrayList<String> timeSelected) {
+		super();
+		this.name = name;
+		this.timeSelected = timeSelected;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -30,6 +41,10 @@ public class Response implements Serializable {
 	
 	public ArrayList<String> getTimeSelected() {
 		return timeSelected;
+	}
+	
+	public void setTimeSelected(ArrayList<String> timeSelected) {
+		this.timeSelected = timeSelected;
 	}
 	
 	public void addTimeSelected(String timeSelected) {
