@@ -8,8 +8,9 @@
 				<id>1</id>
 				<title>Second meeting</title>
 				<creatorEmail>colagarychen@gmail.com</creatorEmail>
+				<creatorName>Po</creatorName>
 				<creationDate>01/04/2016</creationDate>
-				<status>CLOSE</status>
+				<status>OPEN</status>
 				<location>B04</location>
 				<description>meeting for WSD</description>
 				<timeOptions>
@@ -34,6 +35,7 @@
 				<id>0</id>
 				<title>First meeting</title>
 				<creatorEmail>colagarychen@gmail.com</creatorEmail>
+				<creatorName>Po</creatorName>
 				<creationDate>01/04/2016</creationDate>
 				<status>OPEN</status>
 				<location>B11</location>

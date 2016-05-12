@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="static/index.xsl"?>
-<%@ page contentType="application/xml"%>
+<%@ page language="java" contentType="application/xml" pageEncoding="UTF-8" %>
 <%@ page import="java.util.*, com.confer.*"%>
-
-<!-- ?xml-stylesheet type="text/xsl" href="page.xsl"? -->
  
 <!-- initialize confer application -->
 <% 
@@ -37,6 +35,7 @@
                 <id><%= poll.getId() %></id>
                 <title><%= poll.getTitle() %></title>
                 <creatorEmail><%= poll.getCreatorEmail() %></creatorEmail>
+                <creatorName><%= poll.getCreatorName() %></creatorName>
                 <creationDate><%= poll.getCreationDate() %></creationDate>
                 <status><%= poll.getStatus() %></status>
                 <location><%= poll.getLocation() %></location>
@@ -48,7 +47,7 @@
                 	{
                 %>
                     <timeOption><%= option %></timeOption>
-                <%  } %>
+                <%  } // End of time options loop %>
                 </timeOptions>
                 <responses>
                 <%
@@ -65,14 +64,14 @@
                         	{
                        	%>
                             <timeSelected><%= time %></timeSelected>
-                        <%  } %>
+                        <%  } // End of time selected loop %>
                         </times>
                     </response>
-                <%  } %>
+                <%  } // End of Responses loop %>
                 </responses>
             </value>
         </entry>
-    <% } %>
+    <% } // End of list entry loop %>
 	</list>
 </polls>
-<% } %>
+<% } // end of if else statement for checking whether openPolls = null or not %>
