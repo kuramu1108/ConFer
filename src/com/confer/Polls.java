@@ -34,6 +34,26 @@ public class Polls implements Serializable {
 		return result;
 	}
 	
+//	public Hashtable<String, Poll> getPollsWithQuery(boolean statusFlag, boolean minResponseFlag, String status, int minResponse)
+//	{
+//		Hashtable<String, Poll> result = new Hashtable<String, Poll>();
+//		for (Map.Entry<String, Poll> entry: list.entrySet())
+//		{
+//			Poll poll = entry.getValue();
+//			if (statusFlag && minResponseFlag) {
+//				if (poll.getStatus().equals(status) && poll.getResponses().size() >= minResponse)
+//					result.put(entry.getKey(), poll);
+//			} else if (!statusFlag && minResponseFlag) {
+//				if (poll.getResponses().size() >= minResponse)
+//					result.put(entry.getKey(), poll);
+//			} else if (statusFlag && !minResponseFlag) {
+//				if (poll.getStatus().equals(status))
+//					result.put(entry.getKey(), poll);
+//			}
+//		}
+//		return result;
+//	}
+	
 	public Hashtable<String, Poll> getUsersPolls(ArrayList<String> pollIDs)
 	{
 		Hashtable<String, Poll> result = new Hashtable<String, Poll>();

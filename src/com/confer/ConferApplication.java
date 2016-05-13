@@ -12,11 +12,13 @@ public class ConferApplication {
 	private Users users;
 	private Polls polls;
 	
+	// complicated poll fetching functions ============================================
+	// get particular user's polls
 	public Hashtable<String, Poll> getUsersPolls(String email)
 	{
 		ArrayList<String> pollIDs = users.getUsersPollIDs(email);
 		if (pollIDs == null)
-			return null;
+			return new Hashtable<String, Poll>();
 		else
 		{
 			Hashtable<String, Poll> result = polls.getUsersPolls(pollIDs);
@@ -24,12 +26,38 @@ public class ConferApplication {
 		}
 	}
 	
+	// get all the open polls
 	public Hashtable<String, Poll> getOpenPolls()
 	{
 		Hashtable<String, Poll> result = polls.getOpenPolls();
 		return result;
 	}
 	
+	// filter polls input based on query values
+	public Polls filterPollsWithQuery(Hashtable<String, Poll> list, boolean statusFlag, boolean minResponseFlag, String status, int minResponse)
+	{
+		Hashtable<String, Poll> result = new Hashtable<String, Poll>();
+		if (list.size() != 0 )
+		{
+			for (Map.Entry<String, Poll> entry: list.entrySet())
+			{
+				Poll poll = entry.getValue();
+				if (statusFlag && minResponseFlag) {
+					if (poll.getStatus().equals(status) && poll.getResponses().size() >= minResponse)
+						result.put(entry.getKey(), poll);
+				} else if (!statusFlag && minResponseFlag) {
+					if (poll.getResponses().size() >= minResponse)
+						result.put(entry.getKey(), poll);
+				} else if (statusFlag && !minResponseFlag) {
+					if (poll.getStatus().equals(status))
+						result.put(entry.getKey(), poll);
+				}
+			}
+		}
+		return new Polls(result);
+	}
+	
+	// adding new entry =================================================================================
 	public void addPoll(String title, String creatorEmail, String creatorName, String creationDate,
 			String status, String location, String description) throws Exception
 	{
@@ -45,6 +73,7 @@ public class ConferApplication {
 		marshallUsers();
 	}
 	
+	// output/marshal updated xml files
 	private void marshallPolls() throws Exception
 	{
 		JAXBContext jc = JAXBContext.newInstance(Polls.class);
@@ -63,6 +92,7 @@ public class ConferApplication {
 		m.marshal(users, new FileOutputStream(userFilePath));
 	}
 	
+	// filepath setting and unmarshalling ===========================================================
 	public String getUserFilePath() {
 		return userFilePath;
 	}
@@ -87,6 +117,8 @@ public class ConferApplication {
 		polls = (Polls)u.unmarshal(fin);
 		fin.close();
 	}
+	
+	// general accessor and mutator ================================================
 	public Users getUsers() {
 		return users;
 	}
