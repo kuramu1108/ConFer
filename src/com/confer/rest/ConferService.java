@@ -35,6 +35,14 @@ public class ConferService {
 		return conferApp.getPolls();
 	}
 	
+	@Path("polls/{creatorID}")
+	@GET
+	@Produces(MediaType.APPLICATION_XML)
+	public Polls getPolls(@PathParam("creatorID") String creatorID) throws Exception {
+		ConferApplication conferApp = getConferApp();
+		Polls polls = new Polls(conferApp.getUsersPolls(creatorID));
+		return polls;
+	}
 	
 	
 	@Path("hello")
