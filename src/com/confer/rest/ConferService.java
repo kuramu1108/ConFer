@@ -28,6 +28,11 @@ public class ConferService {
 		}
 	}
 	
+	/* localhost:8080/Confer/rest/confer/polls
+	 * optional query parameters: status, minResponse
+	 * fetch polls data in xml format
+	 * 
+	 */
 	@Path("polls")
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
@@ -35,8 +40,8 @@ public class ConferService {
 		ConferApplication conferApp = getConferApp();
 		Hashtable<String, Poll> pollTable = conferApp.getPolls().getList();
 		if (status == null && minResponse == 0) {
-			// no query parameter provided
-			return conferApp.getPolls();
+			// no query parameter provided, return all the open polls
+			return new Polls(conferApp.getOpenPolls());
 		} else if (status != null && minResponse == 0) {
 			// provided status value
 			return conferApp.filterPollsWithQuery(pollTable, true, false, status, 0);
@@ -49,6 +54,11 @@ public class ConferService {
 		}
 	}
 	
+	/* localhost:8080/Confer/rest/confer/polls/{creatorID}
+	 * optional query parameters: status, minResponse
+	 * fetch polls data of a specific user in xml format
+	 * 
+	 */
 	@Path("polls/{creatorID}")
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
@@ -56,8 +66,8 @@ public class ConferService {
 		ConferApplication conferApp = getConferApp();
 		Hashtable<String, Poll> pollTable = conferApp.getUsersPolls(creatorID);
 		if (status == null && minResponse == 0) {
-			// no query parameter provided
-			return new Polls(pollTable);
+			// no query parameter provided, return all the open polls
+			return conferApp.filterPollsWithQuery(pollTable, true, false, "OPEN", 0);
 		} else if (status != null && minResponse == 0) {
 			// provided status value
 			return conferApp.filterPollsWithQuery(pollTable, true, false, status, 0);
