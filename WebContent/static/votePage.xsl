@@ -92,6 +92,7 @@
 		<xsl:when test="id">
 		<div class="container com-sm-12">
 			<form role="form" method="GET" action="testRequest.jsp">
+				<input type="hidden" name="id" value="{id}"/>
 				<div class="form-group">
 					<label for="title">Title:</label>
 					<div>
