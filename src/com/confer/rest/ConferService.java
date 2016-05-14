@@ -3,13 +3,11 @@ package com.confer.rest;
 import javax.servlet.ServletContext;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-import javax.xml.bind.JAXBException;
 
-import java.io.*;
 import java.util.*;
 
 import com.confer.*;
-// localhost:8080/Confer/rest/confer/
+// localhost:8080/{projectname}/rest/confer/
 @Path("/confer")
 public class ConferService {
 	@Context
