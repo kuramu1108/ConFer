@@ -34,6 +34,8 @@ public class Poll implements Serializable {
 	public Poll() {
 		
 	}
+	
+	// constructor that initialize timeOptions and responses
 	public Poll(String id, String title, String creatorEmail, String creatorName, String creationDate,
 			String status, String location, String description) {
 		super();
@@ -48,7 +50,8 @@ public class Poll implements Serializable {
 		timeOptions = new ArrayList<String>();
 		responses = new ArrayList<Response>();
 	}
-
+	
+	// constructor with timeOptions and responses provided
 	public Poll(String id, String title, String creatorEmail,
 			String creationDate, String status, String location,
 			String description, ArrayList<String> timeOptions,
