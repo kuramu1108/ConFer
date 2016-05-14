@@ -13,17 +13,6 @@
 					src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 				<script
 					src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-				<script>
-					$(document).ready(function(){
-					$("#1").hide();
-					$("#show").click(function(){
-					$("#1").show();
-					});
-					$("#hide").click(function(){
-					$("#1").hide();
-					});
-					});
-				</script>
 				<title>Summary</title>
 			</head>
 			<body>
@@ -114,73 +103,30 @@
 				<div class="form-group">
 					<label for="title">Title:</label>
 					<div> 
-						Final iteration meeting something very new and very long 
+						<xsl:value-of select="title" />
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="creator">Date Created:</label>
-					<div> 22/07/2019 </div>
+					<div> 
+						<xsl:value-of select="creationDate" />
+					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="creator">Creator:</label>
-					<div> Solo Original Lemon </div>
+					<div><xsl:value-of select="creatorName" /></div>
 				</div>
 
 				<div class="form-group">
 					<label for="location">Meeting Location:</label>
-					<div> B11.B03.400 </div>
+					<div><xsl:value-of select="location" /></div>
 				</div>
 
 				<div class="form-group">
 					<label for="description">Description:</label>
-					<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Nam
-						pulvinar velit dui, vitae pretium erat lacinia id. Integer
-						fringilla aliquet tempus. Suspendisse lacinia, arcu a
-						scelerisque dictum,
-						leo magna gravida magna, a tincidunt nulla
-						odio nec ex. Integer
-						pharetra
-						vulputate quam vitae faucibus. Ut
-						venenatis, ante vel sodales fermentum,
-						ex augue sagittis nunc,
-						nec viverra ex libero at nisi. Aenean eu
-						varius odio.
-						Cras odio
-						nibh, consectetur eu consectetur id, consequat nec orci.
-						Pellentesque
-						at turpis pharetra, mollis quam pulvinar, dapibus
-						dui.
-
-						Etiam molestie, risus eget tempus condimentum, ligula nibh
-						iaculis
-						urna, tincidunt
-						ullamcorper eros quam quis arcu. Donec
-						dignissim tincidunt massa eget
-						porta. Mauris
-						ligula ante,
-						condimentum eget convallis ut, condimentum quis odio. In
-						dictum
-						massa
-						vel lorem rhoncus, ut posuere dui commodo. Aliquam ut
-						tempor purus.
-						Duis lacinia
-						cursus eros, vel viverra sapien
-						bibendum sit amet. Nullam ut sagittis
-						dui, vitae blandit
-						lorem.
-						Aliquam erat volutpat. Nunc et interdum eros, vel aliquet
-						felis.
-						Phasellus a nibh est.
-						Curabitur venenatis mi id hendrerit
-						commodo. Aenean rutrum dignissim
-						nisi, eu consectetur
-						massa congue
-						vel. Phasellus commodo viverra leo ut imperdiet. Nunc
-						sagittis
-						non augue eu ullamcorper. 
+					<p> <xsl:value-of select="description" />
 	</p>
 				</div>
 
@@ -188,6 +134,7 @@
 				<div class="form-group" style="inline-table">
 					<label for="title">Time choice:</label>
 					<div class="form inline">
+					<xsl:apply-templates select="timeOptions" />
 						<ul>
 							<li>
 								<label style="width:100px">12/JAN/2016</label>
@@ -208,13 +155,6 @@
 						</ul>
 					</div>
 				</div>
-
-				<button type="button" class="btn btn-default" id="show">Show
-					result</button>
-				<button type="button" class="btn btn-default" id="hide">Hide
-					result</button>
-				<button type="submit" class="btn btn-default">Close Poll</button>
-
 
 				<div id="1" class="container col-sm-12" style="margin-top:20px;">
 					<div class="panel-group">
@@ -275,4 +215,11 @@
 		</div>
 
 	</xsl:template>
+	
+	<xsl:template match="timeOptions">
+		<div class="form">
+			<xsl:apply-templates />
+		</div>
+	</xsl:template>
+	
 </xsl:stylesheet>
