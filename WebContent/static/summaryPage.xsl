@@ -84,142 +84,106 @@
 					</div>
 				</nav>
 
-				<xsl:apply-templates select="/polls/list/entry" />
+				<xsl:apply-templates select="confer/poll" />
 			</body>
 		</html>
 	</xsl:template>
 
-	<xsl:template match="/polls/list/entry">
-		<xsl:choose>
-			<xsl:when test="key = 1">
-				<xsl:apply-templates select="value" />
-			</xsl:when>
-		</xsl:choose>
-	</xsl:template>
-
-	<xsl:template match="value">
+	<xsl:template match="poll">
+	<xsl:choose>
+		<xsl:when test="id">
 		<div class="container com-sm-12">
-			<form role="form">
 				<div class="form-group">
 					<label for="title">Title:</label>
-					<div> 
+					<div>
 						<xsl:value-of select="title" />
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="creator">Date Created:</label>
-					<div> 
+					<div>
 						<xsl:value-of select="creationDate" />
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="creator">Creator:</label>
-					<div><xsl:value-of select="creatorName" /></div>
+					<div>
+						<xsl:value-of select="creatorName" />
+					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="location">Meeting Location:</label>
-					<div><xsl:value-of select="location" /></div>
+					<div>
+						<xsl:value-of select="location" />
+					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="description">Description:</label>
-					<p> <xsl:value-of select="description" />
-	</p>
+					<p>
+						<xsl:value-of select="description" />
+					</p>
 				</div>
 
-
-				<div class="form-group" style="inline-table">
-					<label for="title">Time choice:</label>
-					<div class="form inline">
-					<xsl:apply-templates select="timeOptions" />
-						<ul>
-							<li>
-								<label style="width:100px">12/JAN/2016</label>
-								<label>09.00</label>
-							</li>
-							<li>
-								<label style="width:100px">12/JAN/2016</label>
-								<label>13.00</label>
-							</li>
-							<li>
-								<label style="width:100px">21/MAY/2019</label>
-								<label>14.00</label>
-							</li>
-							<li>
-								<label style="width:100px">31/DEC/2020</label>
-								<label>24.00</label>
-							</li>
-						</ul>
-					</div>
-				</div>
 
 				<div id="1" class="container col-sm-12" style="margin-top:20px;">
 					<div class="panel-group">
 						<div class="panel panel-default">
 							<div class="panel-heading clearfix">
-								<p class="panel-title pull-left" style="padding-top: 7.5px;">Summary table of the
-									poll </p>
+								<p class="panel-title pull-left" style="padding-top: 7.5px;">Poll Summary</p>
 								<div class="panel-body">
 									<table class="table table-hover">
 										<thead>
 											<tr>
-												<th>Choice</th>
-												<th>Date</th>
-												<th>Time</th>
-												<th>Result</th>
+												<th>Date Time</th>
+												<th>Votes</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>#1</td>
-												<td>12/JAN/2016</td>
-												<td>09.00</td>
-												<td></td>
-											</tr>
-
-											<tr>
-												<td>#2</td>
-												<td>12/JAN/2016</td>
-												<td>13.00</td>
-												<td></td>
-											</tr>
-
-											<tr>
-												<td>#3</td>
-												<td>21/MAY/2019</td>
-												<td>14.00</td>
-												<td></td>
-											</tr>
-
-											<tr>
-												<td>#4</td>
-												<td>31/DEC/2020</td>
-												<td>24.00</td>
-												<td></td>
-											</tr>
+											<xsl:apply-templates select="timeOptions/timeOption"/>
 										</tbody>
 									</table>
 
-									<p>Number of voters: 200</p>
+									<p>Total Voters:  <xsl:value-of select="totalResponse"/></p>
 								</div>
 							</div>
 						</div>
 					</div>
-
+					<form action="index.jsp">
+						<button type="submit" class="btn btn-default">Back to home page</button>
+					</form>
 				</div>
-
-			</form>
 		</div>
-
+		</xsl:when>
+		<xsl:otherwise>
+			<div class="container com-sm-12">
+				<xsl:apply-templates select="error"/>
+			</div>
+		</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 	
 	<xsl:template match="timeOptions">
-		<div class="form">
-			<xsl:apply-templates />
-		</div>
+	<ul>
+		<xsl:for-each select="timeOption">
+			<li>
+				<xsl:value-of select="datetime"/>
+			</li>
+		</xsl:for-each>
+	</ul>
 	</xsl:template>
 	
+	<xsl:template match="timeOption">
+		<tr>
+			<th><xsl:value-of select="datetime"/></th>
+			<th><xsl:value-of select="result"/></th>
+		</tr>
+	</xsl:template>
+	
+	<xsl:template match="error">
+		<p>The poll you are looking for is not in the record<br></br>or you haven't select a poll<br></br>ERROR: <xsl:apply-templates/></p>
+	</xsl:template>
 </xsl:stylesheet>
