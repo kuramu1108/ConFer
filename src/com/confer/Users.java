@@ -18,11 +18,35 @@ public class Users implements Serializable {
 		list = new ArrayList<User>();
 		count = 0;
 	}
-
+	
+	// return an user object if email and password provided match the data
+	public User login(String email, String password) {
+        for (User user : list) {
+            if (user.getEmail().equals(email) && user.getPassword().equals(password))
+                return user; // Login correct. Return this user.
+        }
+        return null; // Login incorrect. Return null.
+    }
+    
+	// return an ArrayList of String of user's poll IDs
+    public ArrayList<String> getUsersPollIDs(String email){
+    	for (User user : list){
+    		if (user.getEmail().equals(email))
+    			return user.getPollIDs();
+    	}
+    	return null;
+    }
+    
+    
+    // accessor, mutator and list add/remover functinos ====================
 	public ArrayList<User> getList() {
         return list;
     }
 	
+	public void setList(ArrayList<User> list) {
+		this.list = list;
+	}
+    
     public void addUser(User user) {
         list.add(user);
         count++;
@@ -32,20 +56,12 @@ public class Users implements Serializable {
         list.remove(user);
         count--;
     }
-    
-    public User login(String email, String password) {
-        for (User user : list) {
-            if (user.getEmail().equals(email) && user.getPassword().equals(password))
-                return user; // Login correct. Return this user.
-        }
-        return null; // Login incorrect. Return null.
-    }
-    
-    public ArrayList<String> getUsersPollIDs(String email){
-    	for (User user : list){
-    		if (user.getEmail().equals(email))
-    			return user.getPollIDs();
-    	}
-    	return null;
-    }
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}    
 }

@@ -34,26 +34,7 @@ public class Polls implements Serializable {
 		return result;
 	}
 	
-//	public Hashtable<String, Poll> getPollsWithQuery(boolean statusFlag, boolean minResponseFlag, String status, int minResponse)
-//	{
-//		Hashtable<String, Poll> result = new Hashtable<String, Poll>();
-//		for (Map.Entry<String, Poll> entry: list.entrySet())
-//		{
-//			Poll poll = entry.getValue();
-//			if (statusFlag && minResponseFlag) {
-//				if (poll.getStatus().equals(status) && poll.getResponses().size() >= minResponse)
-//					result.put(entry.getKey(), poll);
-//			} else if (!statusFlag && minResponseFlag) {
-//				if (poll.getResponses().size() >= minResponse)
-//					result.put(entry.getKey(), poll);
-//			} else if (statusFlag && !minResponseFlag) {
-//				if (poll.getStatus().equals(status))
-//					result.put(entry.getKey(), poll);
-//			}
-//		}
-//		return result;
-//	}
-	
+	// get the polls of a user  
 	public Hashtable<String, Poll> getUsersPolls(ArrayList<String> pollIDs)
 	{
 		Hashtable<String, Poll> result = new Hashtable<String, Poll>();
@@ -66,6 +47,20 @@ public class Polls implements Serializable {
 		}
 		return result;
 	}
+	
+	// get a poll with ID
+	public Poll getPoll(String pollID)
+	{
+		Poll result = null;
+		for (Map.Entry<String, Poll> entry: list.entrySet())
+		{
+			Poll poll = entry.getValue();
+			if (poll.getId().equals(pollID))
+				result = poll;
+		}
+		return result;
+	}
+	
 	
 	public void addPoll(Poll poll)
 	{
@@ -82,6 +77,10 @@ public class Polls implements Serializable {
 	public Hashtable<String, Poll> getList()
 	{
 		return list;
+	}
+
+	public void setList(Hashtable<String, Poll> list) {
+		this.list = list;
 	}
 
 	public int getCount() {

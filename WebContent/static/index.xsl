@@ -95,7 +95,7 @@
 				    		</thead>
 				    		<tbody>
 				    <!-- Applying later templates -->
-				      			<xsl:apply-templates/>
+				      			<xsl:apply-templates select="confer/polls"/>
  							</tbody>
 	  					</table>
 	  				</div>
@@ -107,7 +107,7 @@
 </html>
 </xsl:template>
 
-<xsl:template match="/polls">
+<xsl:template match="polls">
 	<xsl:for-each select="list/entry">
 	<tr onclick="document.location = '#';">
 		<td><xsl:value-of select="value/title"/></td>
