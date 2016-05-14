@@ -19,6 +19,17 @@
 		else {
 	int count = openPolls.size();
 %>
+<confer>
+<%
+	User user = (User)session.getAttribute("user");
+	if (user != null) {
+%>
+<user>
+	<email><%=user.getEmail() %></email>
+</user>
+<%
+	}
+%>
 <polls>
 	<count><%= count %></count>
 	<list>
@@ -74,4 +85,5 @@
     <% } // End of list entry loop %>
 	</list>
 </polls>
+</confer>
 <% } // end of if else statement for checking whether openPolls = null or not %>
