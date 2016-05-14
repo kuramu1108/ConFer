@@ -6,16 +6,30 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<% 
+	String userFilePath = application.getRealPath("WEB-INF/users.xml");
+	String pollFilePath = application.getRealPath("WEB-INF/polls.xml");
+%>
+<jsp:useBean id="conferApp" class="com.confer.ConferApplication" scope="application">
+	<jsp:setProperty name="conferApp" property="userFilePath" value="<%=userFilePath %>"/>
+	<jsp:setProperty name="conferApp" property="pollFilePath" value="<%=pollFilePath %>"/>
+</jsp:useBean>
 <%
 	String[] result = request.getParameterValues("timeOption");
+	String id = request.getParameter("id");
+	String voterName = request.getParameter("name");
 %>
 <body>
 <p>
 <%
+	out.println(id);
+	out.println(voterName);
 	for (String option: result)
 	{
 		out.println(option);
 	}
+	conferApp.addResponse(id, voterName, result);
+	
 %>
 </p>
 </body>
