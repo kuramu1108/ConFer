@@ -91,8 +91,8 @@
 	<xsl:choose>
 		<xsl:when test="id">
 		<div class="container com-sm-12">
-			<form role="form" method="GET" action="testRequest.jsp">
-				<input type="hidden" name="id" value="{id}"/>
+			<form role="form" method="POST" action="summaryPage.jsp">
+				<input type="hidden" name="pollID" value="{id}"/>
 				<div class="form-group">
 					<label for="title">Title:</label>
 					<div>
