@@ -24,7 +24,7 @@ function validateCreatePoll()
 	}
 	else
 	{
-		var time_re = new RegExp("[0-9]{2}/\[0-9]{2}/[0-9]{4} [0-9]{2}:[0-9]{2} AM");
+		var time_re = new RegExp("[0-9]{2}/\[0-9]{2}/[0-9]{4} [0-9]{2}:[0-9]{2}");
 		for (var i = 0; i<timeOptions.length; i++)
 		{
 			alert(timeOptions[i].value);
@@ -36,7 +36,7 @@ function validateCreatePoll()
 		}
 	}
 	return true;
-};
+}
 
 function validateLogin()
 {
@@ -53,7 +53,7 @@ function validateLogin()
 	if (!email.match(email_re))
 	{
 		alert("invalid email address");
-		retur false;
+		return false;
 	}
 	return true;
-};
+}
