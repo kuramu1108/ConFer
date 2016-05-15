@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="static/index.xsl"?>
 <%@ page language="java" contentType="application/xml" pageEncoding="UTF-8" %>
-<%@ page import="java.util.*, com.confer.*"%>
+<%@ page import="java.util.*, com.confer.*, com.confer.utility.*"%>
  
 <!-- initialize confer application -->
 <% 
@@ -16,13 +16,27 @@
 	Hashtable<String, Poll> openPolls = conferApp.getOpenPolls();
 	if (openPolls == null)
 		out.print("0 open polls");
-		else {
-	int count = openPolls.size();
+	else 
+	{
+		int count = openPolls.size();
+		ArrayList<Poll> openPollsArray = new ArrayList<Poll>(openPolls.values());
+		String sort = request.getParameter("sort");
+		// array sorting
+		if (sort != null){
+			if (sort.equals("title")) 
+				openPollsArray.sort(new PollTitleComparator());
+			else if (sort.equals("creatorName"))
+				openPollsArray.sort(new PollCreatorComparator());
+			else if (sort.equals("date"))
+				openPollsArray.sort(new PollDateComparator());
+		}
+	
 %>
 <confer>
 <%
-	User user = (User)session.getAttribute("user");
-	if (user != null) {
+		User user = (User)session.getAttribute("user");
+		if (user != null) {
+		// insert login tag section to xml
 %>
 	<login>
 		<user>
@@ -30,22 +44,21 @@
 		</user>
 	</login>
 <%
-	} else {
+		} else {
 %>
 	<login>
 		<notLogin></notLogin>
 	</login>
 
-<%  } // end of else checking user login %>
+<%  	} // end of else checking user login %>
 	<polls>
 		<count><%= count %></count>
 		<list>
 <%
-	for (Map.Entry<String, Poll> entry: openPolls.entrySet())
-	{
-		String key = entry.getKey();
-		Poll poll = entry.getValue();
-	
+		for (Poll poll: openPollsArray)
+		{
+			String key = poll.getId();
+		// insert poll entry
 %>
 			<entry>
 				<key><%= key %></key>
@@ -56,7 +69,7 @@
                 	<creationDate><%= poll.getCreationDate() %></creationDate>
             	</value>
         	</entry>
-    <% } // End of list entry loop %>
+    <% 	} // End of list entry loop %>
 	</list>
 </polls>
 </confer>

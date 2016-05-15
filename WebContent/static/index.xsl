@@ -36,9 +36,9 @@
                     			<div class="input-group-btn">
                         			<button class="btn btn-inverse pull-right" data-toggle="dropdown"><i class="glyphicon glyphicon-sort"></i></button>
                         			<ul class="dropdown-menu pull-right">
-                        				<li><a href="#">Date</a></li>
-                        				<li><a href="#">Creator Name</a></li>
-                        				<li><a href="#">Title</a></li>
+                        				<li><a href="?sort=date">Date</a></li>
+                        				<li><a href="?sort=creatorName">Creator Name</a></li>
+                        				<li><a href="?sort=title">Title</a></li>
                         			</ul>
                     			</div>
                 			</div>
