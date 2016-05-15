@@ -36,4 +36,24 @@ function validateCreatePoll()
 		}
 	}
 	return true;
-}
+};
+
+function validateLogin()
+{
+	var email = "";
+	var password = "";
+	
+	if (email == "" || password == "")
+	{
+		alert("Please fill in all the field");
+		return false;
+	}
+	
+	var email_re = new RegExp("[a-z0-9\.]+@[a-z]+(\.[a-z]+)+");
+	if (!email.match(email_re))
+	{
+		alert("invalid email address");
+		retur false;
+	}
+	return true;
+};

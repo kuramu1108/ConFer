@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="java.util.*, com.confer.*"%>
+    pageEncoding="UTF-8"%><%@ page import="java.util.*, com.confer.*"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,9 +16,8 @@
 	<jsp:setProperty name="conferApp" property="pollFilePath" value="<%=pollFilePath %>"/>
 </jsp:useBean>
 <%
-	User user = conferApp.getUsers().login("colagarychen@gmail.com", "abcd1234");
-	out.println(user.getEmail());
-	session.setAttribute("user", user);
+User user = (User)session.getAttribute("user");	
+out.println(user.getEmail());
 %>
 
 <body>

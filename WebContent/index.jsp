@@ -24,15 +24,22 @@
 	User user = (User)session.getAttribute("user");
 	if (user != null) {
 %>
-<user>
-	<email><%=user.getEmail() %></email>
-</user>
+	<login>
+		<user>
+			<email><%=user.getEmail() %></email>
+		</user>
+	</login>
 <%
-	}
+	} else {
 %>
-<polls>
-	<count><%= count %></count>
-	<list>
+	<login>
+		<notLogin></notLogin>
+	</login>
+
+<%  } // end of else checking user login %>
+	<polls>
+		<count><%= count %></count>
+		<list>
 <%
 	for (Map.Entry<String, Poll> entry: openPolls.entrySet())
 	{
@@ -40,48 +47,15 @@
 		Poll poll = entry.getValue();
 	
 %>
-		<entry>
-			<key><%= key %></key>
-			<value>
-                <id><%= poll.getId() %></id>
-                <title><%= poll.getTitle() %></title>
-                <creatorEmail><%= poll.getCreatorEmail() %></creatorEmail>
-                <creatorName><%= poll.getCreatorName() %></creatorName>
-                <creationDate><%= poll.getCreationDate() %></creationDate>
-                <status><%= poll.getStatus() %></status>
-                <location><%= poll.getLocation() %></location>
-                <description><%= poll.getDescription() %></description>
-                <timeOptions>
-                <%
-                	ArrayList<String> timeOptions = poll.getTimeOptions();
-                	for (String option: timeOptions)
-                	{
-                %>
-                    <timeOption><%= option %></timeOption>
-                <%  } // End of time options loop %>
-                </timeOptions>
-                <responses>
-                <%
-                	ArrayList<Response> responses = poll.getResponses();
-                	for (Response respon: responses)
-                	{
-                %>
-                    <response>
-                        <name><%= respon.getName() %></name>
-                        <times>
-                        <%
-                        	ArrayList<String> times = respon.getTimeSelected();
-                        	for (String time: times)
-                        	{
-                       	%>
-                            <timeSelected><%= time %></timeSelected>
-                        <%  } // End of time selected loop %>
-                        </times>
-                    </response>
-                <%  } // End of Responses loop %>
-                </responses>
-            </value>
-        </entry>
+			<entry>
+				<key><%= key %></key>
+				<value>
+                	<id><%= poll.getId() %></id>
+                	<title><%= poll.getTitle() %></title>
+                	<creatorName><%= poll.getCreatorName() %></creatorName>
+                	<creationDate><%= poll.getCreationDate() %></creationDate>
+            	</value>
+        	</entry>
     <% } // End of list entry loop %>
 	</list>
 </polls>
