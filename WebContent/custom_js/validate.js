@@ -64,6 +64,20 @@ function validateCreatePoll()
         html.appendTo('#timeOptions-div');
 		return false;
 	}
+	
+	// once everything is good at creation date value;
+	var creationDate = new Date();
+	var dd = creationDate.getDate();
+	var MM = creationDate.getMonth() + 1;
+	var yyyy = creationDate.getFullYear();
+
+	if(dd<10)
+	    dd = '0' + dd;
+	if(MM < 10)
+	    MM = '0' + MM;
+	
+	creationDate = dd + '/' + MM + '/' + yyyy;
+	document.getElementById("creationDate").value = creationDate;
 	return true;
 }
 
