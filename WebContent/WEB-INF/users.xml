@@ -44,8 +44,6 @@
         <password>JoshuaTheGreat</password>
         <pollIDs>
             <pollID>2</pollID>
-            <pollID>11</pollID>
-            <pollID>12</pollID>
         </pollIDs>
     </user>
 </users>
