@@ -82,23 +82,17 @@
 						</ul>
 					</div>
 				</nav>
-				<xsl:apply-templates select="/polls/list/entry" />
+				<xsl:apply-templates select="/poll" />
 			</body>
 		</html>
 	</xsl:template>
 
-
-	<xsl:template match="/polls/list/entry">
-		<xsl:choose>
-			<xsl:when test="key = 1">
-				<xsl:apply-templates select="value" />
-			</xsl:when>
-		</xsl:choose>
-	</xsl:template>
-
-	<xsl:template match="value">
+	<xsl:template match="poll">
+	<xsl:choose>
+		<xsl:when test="id">
 		<div class="container com-sm-12">
-			<form role="form">
+			<form role="form" method="POST" action="summaryPage.jsp">
+				<input type="hidden" name="pollID" value="{id}"/>
 				<div class="form-group">
 					<label for="title">Title:</label>
 					<div>
@@ -136,7 +130,7 @@
 
 
 				<div class="form-group" style="inline-table">
-					<label for="title">Time choice:</label>
+					<label for="title">Time Options:</label>
 
 					<xsl:apply-templates select="timeOptions" />
 
@@ -146,13 +140,20 @@
 					<label for="voterName">Voter Full Name:</label>
 					<div>
 						<input type="text" class="form-control" style="width: 300px;"
-							id="name" />
+							id="name" name="name"/>
 					</div>
 				</div>
 
 				<button type="submit" class="btn btn-default">Submit</button>
 			</form>
 		</div>
+		</xsl:when>
+		<xsl:otherwise>
+			<div class="container com-sm-12">
+				<xsl:apply-templates select="error"/>
+			</div>
+		</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="timeOptions">
@@ -164,10 +165,13 @@
 	<xsl:template match="timeOption">
 		<div class="checkbox">
 			<label style="width:200px">
-				<input type="checkbox"/> 
+				<input type="checkbox" name="timeOption" value="{.}"/> 
 				<xsl:apply-templates />
 			</label>
 		</div>
 	</xsl:template>
-
+	
+	<xsl:template match="error">
+		<p>The poll you are looking for is not in the record<br></br>or you haven't select a poll<br></br>ERROR: <xsl:apply-templates/></p>
+	</xsl:template>
 </xsl:stylesheet>
