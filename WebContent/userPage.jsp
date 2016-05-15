@@ -16,8 +16,16 @@
 	<jsp:setProperty name="conferApp" property="pollFilePath" value="<%=pollFilePath %>"/>
 </jsp:useBean>
 <%
+if (request.getParameter("state").equals("logOut"))
+{
+	out.println("you are not logged in");
+	session.removeAttribute("user");
+}
+else
+{
 User user = (User)session.getAttribute("user");	
 out.println(user.getEmail());
+}
 %>
 
 <body>
