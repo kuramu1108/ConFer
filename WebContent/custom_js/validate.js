@@ -1,3 +1,15 @@
+function hasDuplicates(array) {
+    var valuesSoFar = Object.create(null);
+    for (var i = 0; i < array.length; ++i) {
+        var value = array[i];
+        if (value in valuesSoFar) {
+            return true;
+        }
+        valuesSoFar[value] = true;
+    }
+    return false;
+}
+
 function validateCreatePoll()
 {
 	var title = document.getElementById("title").value;
@@ -35,6 +47,12 @@ function validateCreatePoll()
 			}
 		}
 	}
+	
+	if (hasDuplicates(timeOptions))
+	{
+		alert("Please do not select same time options");
+		return false;
+	}
 	return true;
 }
 
@@ -56,4 +74,25 @@ function validateLogin()
 		return false;
 	}
 	return true;
+}
+
+function validateVote()
+{
+	var timeOptions = document.getElementsByName("timeOption");
+	var voterName = document.getElementById("name").value;
+	
+	if (voterName == "")
+	{
+		alert("Please Input your name");
+		return false;
+	}
+	
+	for (var i = 0; i < timeOptions.length; i++) {
+		if (timeOptions[i].checked == true) {
+			
+			return true;
+		}
+	}
+	alert("Please select at least one seat");
+	return false; 
 }
