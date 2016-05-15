@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <users>
-    <count>2</count>
+    <count>5</count>
     <user>
         <email>colagarychen@gmail.com</email>
         <username>pohao</username>
@@ -8,6 +8,8 @@
         <pollIDs>
             <pollID>0</pollID>
             <pollID>1</pollID>
+            <pollID>6</pollID>
+            <pollID>9</pollID>
         </pollIDs>
     </user>
     <user>
@@ -15,5 +17,35 @@
         <username>kuramu</username>
         <password>abccd1234</password>
         <pollIDs/>
+    </user>
+    <user>
+        <email>raymondtedja@gmail.com</email>
+        <username>rezrl</username>
+        <password>rtedja88</password>
+        <pollIDs>
+            <pollID>3</pollID>
+            <pollID>5</pollID>
+            <pollID>7</pollID>
+        </pollIDs>
+    </user>
+    <user>
+        <email>ongkydarma@gmail.com</email>
+        <username>ongkyd96</username>
+        <password>abcdongky123</password>
+        <pollIDs>
+            <pollID>4</pollID>
+            <pollID>8</pollID>
+            <pollID>10</pollID>
+        </pollIDs>
+    </user>
+    <user>
+        <email>joshua@yahoo.com</email>
+        <username>MynameisJosh</username>
+        <password>JoshuaTheGreat</password>
+        <pollIDs>
+            <pollID>2</pollID>
+            <pollID>11</pollID>
+            <pollID>12</pollID>
+        </pollIDs>
     </user>
 </users>
