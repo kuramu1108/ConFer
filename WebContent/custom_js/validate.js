@@ -16,7 +16,7 @@ function validateCreatePoll()
 	var location = document.getElementById("location").value;
 	var description = document.getElementById("description").value;
 	var timeOptions = document.getElementsByName("timeOption");
-
+	
 	var timeOptionEntered = true;
 	if (timeOptions == null || timeOptions.length == 0 || timeOptions[0].value == "")
 	{
@@ -25,13 +25,19 @@ function validateCreatePoll()
 	
 	if (title == "" || location == "" || description == "")
 	{
-	    alert("Please fill in all the fields");
+//	    alert("Please fill in all the fields");
+	    $("#error-message").fadeOut('fast').remove();
+	    var html = $("<span id='error-message' style='color:red'>* are required fields</span>");
+        html.appendTo('#description-div');
 	    return false;
 	}
 	
 	if (!timeOptionEntered)
 	{
-		alert("Please provide at least on time option");
+//		alert("Please provide at least on time option");
+		$("#error-message").fadeOut('fast').remove();
+	    var html = $("<span id='error-message' style='color:red'>* Please provide at least on time option</span>");
+        html.appendTo('#timeOptions-div');
 		return false;
 	}
 	else
@@ -41,7 +47,10 @@ function validateCreatePoll()
 		{
 			if (!timeOptions[i].value.match(time_re))
 			{
-				alert("time format invalid, please don't modify the time");
+//				alert("time format invalid, please don't modify the time");
+				$("#error-message").fadeOut('fast').remove();
+			    var html = $("<span id='error-message' style='color:red'>* time format invalid, please don't modify the time</span>");
+		        html.appendTo('#timeOptions-div');
 				return false;
 			}
 		}
@@ -49,7 +58,10 @@ function validateCreatePoll()
 	
 	if (hasDuplicates(timeOptions))
 	{
-		alert("Please do not select same time options");
+//		alert("Please do not select same time options");
+		$("#error-message").fadeOut('fast').remove();
+	    var html = $("<span id='error-message' style='color:red'>* Please do not select same time options</span>");
+        html.appendTo('#timeOptions-div');
 		return false;
 	}
 	return true;

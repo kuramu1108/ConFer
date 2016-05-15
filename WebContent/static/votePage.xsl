@@ -138,7 +138,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="voterName">Voter Full Name:</label>
+					<label for="voterName">Voter Full Name: <span style="color:red">*</span></label>
 					<div>
 						<input type="text" class="form-control" style="width: 300px;"
 							id="name" name="name"/>
