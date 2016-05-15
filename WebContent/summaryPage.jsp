@@ -33,10 +33,12 @@
 </poll>
 </confer>
 <%		
-		} else {			
+		} else {
+			// poll result not null
 			String[] result = request.getParameterValues("timeOption");
 			String voterName = request.getParameter("name");
-			conferApp.addResponse(pollID, voterName, result);
+			if (result != null && voterName != null)
+				conferApp.addResponse(pollID, voterName, result);
 %>
 <confer>
 <poll>
@@ -48,7 +50,7 @@
 	<description><%=poll.getDescription() %></description>
 	<timeOptions>
 <%
-			// poll result not null
+			
 			Hashtable<String, Integer> responses = poll.getResult();
 			for (Map.Entry<String, Integer> entry : responses.entrySet())
 			{
@@ -60,6 +62,24 @@
 <%			} %>
 	</timeOptions>
 	<totalResponse><%=poll.getResponseCount() %></totalResponse>
+	<highestResponses>
+<%
+			int highest = 0;
+			for (Map.Entry<String, Integer> entry: responses.entrySet())
+			{
+				if (entry.getValue() > highest)
+					highest = entry.getValue();
+			}
+			for (Map.Entry<String, Integer> entry: responses.entrySet())
+			{
+				if (entry.getValue() == highest)
+				{
+%>
+		<highestResponse><%= entry.getKey() %></highestResponse>
+<%				}
+			} // end of for loop for highest response
+%>
+	</highestResponses>
 </poll>
 </confer>
 <% 

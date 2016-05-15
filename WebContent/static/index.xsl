@@ -73,7 +73,7 @@
 		<xsl:when test="user">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="userPage.jsp"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+				<li><a href="userPage.jsp?state=logOut"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
 			</ul>
 		</xsl:when>
 		<xsl:otherwise>
@@ -97,17 +97,17 @@
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">X</button>
-								<h4 class="modal-title">Login</h4>
+								<h4 class="modal-title">Already a User?</h4>
 							</div>
 			
 							<div class="modal-body">
 								<div class="container">
 									<h2 align="left">Login</h2>
-									<form class="form-horizontal" role="form">
+									<form class="form-horizontal" role="form" method="POST" action="testRequest.jsp" id="loginForm">
 										<div class="form-group">
 											<label class="control-label col-sm-2" for="email">Email:</label>
 											<div class="col-sm-4">
-												<input type="text" class="form-control" id="email"
+												<input type="text" class="form-control" id="email" name="email"
 													placeholder="Enter email" />
 											</div>
 										</div>
@@ -115,7 +115,7 @@
 										<div class="form-group">
 											<label class="control-label col-sm-2" for="pwd">Password:</label>
 											<div class="col-sm-4">
-												<input type="password" class="form-control" id="pwd"
+												<input type="password" class="form-control" id="password" name="password"
 													placeholder="Enter password" />
 											</div>
 										</div>
@@ -123,10 +123,11 @@
 								</div>
 			
 								<div class="modal-footer">
-									<button type="submit" class="btn btn-default">Login</button>
+									<button type="submit" class="btn btn-default" form="loginForm">Login</button>
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 								</div>
 							</div>
+							
 						</div>
 					</div>
 				</div>

@@ -11,6 +11,7 @@
 								src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 							<script
 								src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+							<script src="custom_js/validate.js"></script>
 							<title>Insert title here</title>
 				<style>
 
@@ -91,7 +92,7 @@
 	<xsl:choose>
 		<xsl:when test="id">
 		<div class="container com-sm-12">
-			<form role="form" method="POST" action="summaryPage.jsp">
+			<form role="form" id="voteForm" method="POST" action="summaryPage.jsp" onsubmit="return validateVote();">
 				<input type="hidden" name="pollID" value="{id}"/>
 				<div class="form-group">
 					<label for="title">Title:</label>
@@ -146,6 +147,10 @@
 
 				<button type="submit" class="btn btn-default">Submit</button>
 			</form>
+			<form role="form" method="GET" action="summaryPage.jsp">
+				<input type="hidden" name="pollID" value="{id}"/>
+				<button type="submit" class="btn btn-info">See Current Summary</button>
+			</form>
 		</div>
 		</xsl:when>
 		<xsl:otherwise>
@@ -158,7 +163,7 @@
 
 	<xsl:template match="timeOptions">
 		<div class="form">
-			<xsl:apply-templates />
+			<xsl:apply-templates select="timeOption"/>
 		</div>
 	</xsl:template>
 
@@ -166,7 +171,7 @@
 		<div class="checkbox">
 			<label style="width:200px">
 				<input type="checkbox" name="timeOption" value="{.}"/> 
-				<xsl:apply-templates />
+				<xsl:apply-templates/>
 			</label>
 		</div>
 	</xsl:template>

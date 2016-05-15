@@ -147,13 +147,17 @@
 										</tbody>
 									</table>
 
-									<p>Total Voters:  <xsl:value-of select="totalResponse"/></p>
+									<p>Total Voters:  <xsl:value-of select="totalResponse"/><br></br><xsl:apply-templates select="highestResponses"/></p>
 								</div>
 							</div>
 						</div>
 					</div>
 					<form action="index.jsp">
 						<button type="submit" class="btn btn-default">Back to home page</button>
+					</form>
+					<form role="form" method="GET" action="votePage.jsp">
+						<input type="hidden" name="pollID" value="{id}"/>
+						<button type="submit" class="btn btn-info">Back to vote page</button>
 					</form>
 				</div>
 		</div>
@@ -181,6 +185,15 @@
 			<th><xsl:value-of select="datetime"/></th>
 			<th><xsl:value-of select="result"/></th>
 		</tr>
+	</xsl:template>
+	
+	<xsl:template match="highestResponses">
+		<br/>Current Highest Response(s):
+		<ul>
+		<xsl:for-each select="highestResponse">
+			<li><xsl:apply-templates/></li>
+		</xsl:for-each>
+		</ul>
 	</xsl:template>
 	
 	<xsl:template match="error">
