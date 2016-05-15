@@ -1,5 +1,7 @@
 $(function() {
-	$('#datetimepicker1').datetimepicker();
+	$('#datetimepicker1').datetimepicker({
+    	format: 'DD/MM/YYYY HH:mm',           
+    });
 });
 
 var datetimepicker_count = 1;
@@ -12,9 +14,12 @@ function addTimeOption() {
             var html = $(htmlText_1 + datetimepicker_count.toString() + htmlText_2);
             html.appendTo('#timeOptions');
             var dtpID = "#datetimepicker" + datetimepicker_count.toString();
-            $(dtpID).datetimepicker();
+            $(dtpID).datetimepicker({
+            	format: 'DD/MM/YYYY HH:mm',           
+            });
 }
 
 function removeTimeOption() {
 	$("ul li:last").fadeOut('fast').remove();
+	datetimepicker_count--;
 }

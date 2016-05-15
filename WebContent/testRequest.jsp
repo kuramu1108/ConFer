@@ -20,6 +20,8 @@
 	String voterName = request.getParameter("name"); */
 	String[] timeOptions = request.getParameterValues("timeOption");
 	String des = request.getParameter("description");
+	String email = request.getParameter("email");
+	String password = request.getParameter("password");
 %>
 <body>
 <p>
@@ -33,12 +35,15 @@
 	conferApp.addResponse(id, voterName, result); 
 	*/
 	
-	for(String option: timeOptions)
+	/* for(String option: timeOptions)
 	{
 		out.println(option);
 	}
 	
-	out.println(des);
+	out.println(des); */
+	
+	out.println("<br>email: " + email);
+	out.println("<br>password: " + password);
 	
 %>
 </p>
