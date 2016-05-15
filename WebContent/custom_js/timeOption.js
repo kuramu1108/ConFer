@@ -21,4 +21,5 @@ function addTimeOption() {
 
 function removeTimeOption() {
 	$("ul li:last").fadeOut('fast').remove();
+	datetimepicker_count--;
 }

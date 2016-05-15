@@ -39,7 +39,6 @@ function validateCreatePoll()
 		var time_re = new RegExp("[0-9]{2}/\[0-9]{2}/[0-9]{4} [0-9]{2}:[0-9]{2}");
 		for (var i = 0; i<timeOptions.length; i++)
 		{
-			alert(timeOptions[i].value);
 			if (!timeOptions[i].value.match(time_re))
 			{
 				alert("time format invalid, please don't modify the time");
