@@ -82,7 +82,7 @@ public class ConferApplication {
 		marshallPolls();
 	}
 	
-	// output/marshal updated xml files
+	// output/marshal updated xml files =============================================================
 	private void marshallPolls() throws Exception
 	{
 		JAXBContext jc = JAXBContext.newInstance(Polls.class);
