@@ -1,7 +1,7 @@
 function hasDuplicates(array) {
     var valuesSoFar = Object.create(null);
     for (var i = 0; i < array.length; ++i) {
-        var value = array[i];
+        var value = array[i].value;
         if (value in valuesSoFar) {
             return true;
         }
@@ -83,19 +83,25 @@ function validateCreatePoll()
 
 function validateLogin()
 {
-	var email = "";
-	var password = "";
+	var email = document.getElementById("email").value;
+	var password = document.getElementById("password").value;
 	
 	if (email == "" || password == "")
 	{
-		alert("Please fill in all the field");
+//		alert("Please fill in all the field");
+		$("#error-message").fadeOut('fast').remove();
+	    var html = $("<span id='error-message' style='color:red'>* fields are required</span>");
+        html.appendTo('#password-div');
 		return false;
 	}
 	
 	var email_re = new RegExp("[a-z0-9\.]+@[a-z]+(\.[a-z]+)+");
 	if (!email.match(email_re))
 	{
-		alert("invalid email address");
+//		alert("invalid email address");
+		$("#error-message").fadeOut('fast').remove();
+	    var html = $("<span id='error-message' style='color:red'>Invalid Email address</span>");
+        html.appendTo('#email-div');
 		return false;
 	}
 	return true;
@@ -108,7 +114,10 @@ function validateVote()
 	
 	if (voterName == "")
 	{
-		alert("Please Input your name");
+//		alert("Please Input your name");
+		$("#error-message").fadeOut('fast').remove();
+	    var html = $("<span id='error-message' style='color:red'>Let others know your name!</span>");
+        html.appendTo('#name-div');
 		return false;
 	}
 	
@@ -118,6 +127,9 @@ function validateVote()
 			return true;
 		}
 	}
-	alert("Please select at least one time");
+//	alert("Please select at least one time");
+	$("#error-message").fadeOut('fast').remove();
+    var html = $("<span id='error-message' style='color:red'>Select at least one time option</span>");
+    html.appendTo('#timeOptions-div');
 	return false; 
 }
