@@ -85,6 +85,15 @@ public class Poll implements Serializable {
 	public int getResponseCount(){
 		return responses.size();
 	}
+	
+	public ArrayList<String> getResponsers() {
+		ArrayList<String> responsers = new ArrayList<String>();
+		for (Response response: responses) {
+			if (!responsers.contains(response.getName()))
+				responsers.add(response.getName());
+		}
+		return responsers;
+	}
 
 	// Accessor, mutator and list element add/remove =============================
 	public String getId() {
