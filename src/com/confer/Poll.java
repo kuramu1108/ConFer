@@ -51,21 +51,21 @@ public class Poll implements Serializable {
 		responses = new ArrayList<Response>();
 	}
 	
-	// constructor with timeOptions and responses provided
-	public Poll(String id, String title, String creatorEmail,
+	// constructor with timeOptions provided
+	public Poll(String id, String title, String creatorEmail, String creatorName,
 			String creationDate, String status, String location,
-			String description, ArrayList<String> timeOptions,
-			ArrayList<Response> responses) {
+			String description, ArrayList<String> timeOptions) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.creatorEmail = creatorEmail;
+		this.creatorName = creatorName;
 		this.creationDate = creationDate;
 		this.status = status;
 		this.location = location;
 		this.description = description;
 		this.timeOptions = timeOptions;
-		this.responses = responses;
+		responses = new ArrayList<Response>();
 	}
 	
 	// properties ===========================================================

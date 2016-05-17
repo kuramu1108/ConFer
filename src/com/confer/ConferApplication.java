@@ -59,10 +59,12 @@ public class ConferApplication {
 	
 	// adding new entry/modify an entry =================================================================================
 	public void addPoll(String title, String creatorEmail, String creatorName, String creationDate,
-			String status, String location, String description) throws Exception
+			String status, String location, String description, ArrayList<String> timeOptions) throws Exception
 	{
-		Poll poll = new Poll(Integer.toString(polls.getCount()), title, creatorEmail, creatorName, creationDate, status, location, description);
+		String id = Integer.toString(polls.getCount());
+		Poll poll = new Poll(id, title, creatorEmail, creatorName, creationDate, status, location, description, timeOptions);
 		polls.addPoll(poll);
+		users.getUser(creatorEmail).addPoll(id);
 		marshallPolls();
 	}
 	
