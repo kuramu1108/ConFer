@@ -118,6 +118,6 @@ function validateVote()
 			return true;
 		}
 	}
-	alert("Please select at least one seat");
+	alert("Please select at least one time");
 	return false; 
 }

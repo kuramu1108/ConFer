@@ -155,9 +155,14 @@
 					<form action="index.jsp">
 						<button type="submit" class="btn btn-default">Back to home page</button>
 					</form>
-					<form role="form" method="GET" action="votePage.jsp">
+					<form role="form" method="GET" action="votePage.jsp" style="float:left">
 						<input type="hidden" name="pollID" value="{id}"/>
 						<button type="submit" class="btn btn-info">Back to vote page</button>
+					</form>
+					<form role="form" method="PUT" action="testRequest.jsp" style="float:left; margin-left:50px">
+						<input type="hidden" name="pollID" value="{id}"/>
+						<input type="hidden" name="status" value="close"/>
+						<button type="submit" class="btn btn-danger">Close the Poll</button>
 					</form>
 				</div>
 		</div>

@@ -147,10 +147,10 @@
 
 				<button type="submit" class="btn btn-default">Submit</button>
 			</form>
-			<form role="form" method="GET" action="summaryPage.jsp">
-				<input type="hidden" name="pollID" value="{id}"/>
-				<button type="submit" class="btn btn-info">See Current Summary</button>
-			</form>
+				<form role="form" method="GET" action="summaryPage.jsp" style="float:left">
+					<input type="hidden" name="pollID" value="{id}"/>
+					<button type="submit" class="btn btn-info">See Current Summary</button>
+				</form>
 		</div>
 		</xsl:when>
 		<xsl:otherwise>
