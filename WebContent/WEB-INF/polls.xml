@@ -20,13 +20,6 @@
 					<timeOption>04/05/2016 14:00</timeOption>
 				</timeOptions>
 				<responses>
-					<response>
-						<name>Raymond</name>
-						<times>
-							<timeSelected>04/05/2016 06:00</timeSelected>
-							<timeSelected>04/05/2016 14:00</timeSelected>
-						</times>
-					</response>
 				</responses>
 			</value>
 		</entry>
@@ -220,8 +213,8 @@
 					<response>
 						<name>Raymond</name>
 						<times>
-							<timeSelected>11/05/2016 06:00</timeSelected>
-							<timeSelected>11/05/2016 14:00</timeSelected>
+							<timeSelected>15/05/2016 16:00</timeSelected>
+							<timeSelected>16/05/2016 18:00</timeSelected>
 						</times>
 					</response>
 				</responses>

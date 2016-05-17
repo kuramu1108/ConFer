@@ -39,7 +39,7 @@ ul
 </nav>
 
 	<div class="container com-sm-12">
-		<form role="form" action="../testRequest.jsp" method="POST" onsubmit="return validateCreatePoll();">
+		<form role="form" action="../testRequest.jsp" method="GET" onsubmit="return validateCreatePoll();">
 			<div class="form-group" id="title-div">
 				<label for="title">Title: <span style="color:red">*</span></label>
 				<input type="text" class="form-control" id="title" name="title">
@@ -56,30 +56,31 @@ ul
 					style="height: 200px"></textarea>
 			</div>
 			<div class="form-group" id="timeOptions-div">
-			<label for="timeOptions">Time Options:</label>
-			<ul id="timeOptions">
-				<li>
-					<div class="form-group">
-						<div class="row">
-							<div class='col-sm-6'>
-								<div class="form-group">
-									<div class='input-group date' id='datetimepicker1'>
-										<input type='text' class="form-control" name="timeOption"/> <span
-											class="input-group-addon"> <span
-											class="glyphicon glyphicon-calendar"></span>
-										</span>
+				<label for="timeOptions">Time Options:</label>
+				<ul id="timeOptions">
+					<li>
+						<div class="form-group">
+							<div class="row">
+								<div class='col-sm-6'>
+									<div class="form-group">
+										<div class='input-group date' id='datetimepicker1'>
+											<input type='text' class="form-control" name="timeOption"/> <span
+												class="input-group-addon"> <span
+												class="glyphicon glyphicon-calendar"></span>
+											</span>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="col-xs-1">
-								<button type="button" class="btn btn-default addButton"
-									onclick="addTimeOption();">+</button>
+								<div class="col-xs-1">
+									<button type="button" class="btn btn-default addButton"
+										onclick="addTimeOption();">+</button>
+								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-			</ul>
-</div>
+					</li>
+				</ul>
+			</div>
+			<input type="hidden" id="creationDate" name="creationDate" value=""/>
 			<input type="submit" class="btn btn-default" value="Create"/>
 		</form>
 	</div>

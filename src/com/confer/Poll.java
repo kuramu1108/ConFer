@@ -36,10 +36,9 @@ public class Poll implements Serializable {
 	}
 	
 	// constructor that initialize timeOptions and responses
-	public Poll(String id, String title, String creatorEmail, String creatorName, String creationDate,
+	public Poll(String title, String creatorEmail, String creatorName, String creationDate,
 			String status, String location, String description) {
 		super();
-		this.id = id;
 		this.title = title;
 		this.creatorEmail = creatorEmail;
 		this.creatorName = creatorName;
@@ -51,24 +50,23 @@ public class Poll implements Serializable {
 		responses = new ArrayList<Response>();
 	}
 	
-	// constructor with timeOptions and responses provided
-	public Poll(String id, String title, String creatorEmail,
+	// constructor with timeOptions provided
+	public Poll(String title, String creatorEmail, String creatorName,
 			String creationDate, String status, String location,
-			String description, ArrayList<String> timeOptions,
-			ArrayList<Response> responses) {
+			String description, ArrayList<String> timeOptions) {
 		super();
-		this.id = id;
 		this.title = title;
 		this.creatorEmail = creatorEmail;
+		this.creatorName = creatorName;
 		this.creationDate = creationDate;
 		this.status = status;
 		this.location = location;
 		this.description = description;
 		this.timeOptions = timeOptions;
-		this.responses = responses;
+		responses = new ArrayList<Response>();
 	}
 	
-	// properties
+	// properties ===========================================================
 	public Hashtable<String, Integer> getResult() {
 		Hashtable<String, Integer> result = new Hashtable<String, Integer>();
 		for (String timeOption: timeOptions) {
@@ -81,9 +79,27 @@ public class Poll implements Serializable {
 		}
 		return result;
 	}
-
+	
+	public boolean alreadyResponse(String voterName) {
+		boolean hasResponse = false;
+		for (Response response: responses) {
+			if(response.getName().equals(voterName))
+				hasResponse = true;
+		}
+		return hasResponse;
+	}
+	
 	public int getResponseCount(){
 		return responses.size();
+	}
+	
+	public ArrayList<String> getResponsers() {
+		ArrayList<String> responsers = new ArrayList<String>();
+		for (Response response: responses) {
+			if (!responsers.contains(response.getName()))
+				responsers.add(response.getName());
+		}
+		return responsers;
 	}
 
 	// Accessor, mutator and list element add/remove =============================

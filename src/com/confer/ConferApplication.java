@@ -57,12 +57,13 @@ public class ConferApplication {
 		return new Polls(result);
 	}
 	
-	// adding new entry =================================================================================
+	// adding new entry/modify an entry =================================================================================
 	public void addPoll(String title, String creatorEmail, String creatorName, String creationDate,
-			String status, String location, String description) throws Exception
+			String status, String location, String description, ArrayList<String> timeOptions) throws Exception
 	{
-		Poll poll = new Poll(Integer.toString(polls.getCount()), title, creatorEmail, creatorName, creationDate, status, location, description);
+		Poll poll = new Poll(title, creatorEmail, creatorName, creationDate, status, location, description, timeOptions);
 		polls.addPoll(poll);
+		users.getUser(creatorEmail).addPoll(poll.getId());
 		marshallPolls();
 	}
 	
@@ -82,7 +83,14 @@ public class ConferApplication {
 		marshallPolls();
 	}
 	
-	// output/marshal updated xml files
+	public void closePoll(String pollID) throws Exception
+	{
+		Poll poll = polls.getPoll(pollID);
+		poll.setStatus("CLOSE");
+		marshallPolls();
+	}
+	
+	// output/marshal updated xml files =============================================================
 	private void marshallPolls() throws Exception
 	{
 		JAXBContext jc = JAXBContext.newInstance(Polls.class);

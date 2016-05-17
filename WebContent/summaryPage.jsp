@@ -13,6 +13,22 @@
 	<jsp:setProperty name="conferApp" property="pollFilePath" value="<%=pollFilePath %>"/>
 </jsp:useBean>
 <confer>
+	<login>
+<%
+	User user = (User)session.getAttribute("user");
+	if (user == null) {
+%>
+		<notLogin></notLogin>
+<%
+	} else {
+%>
+		<user>
+			<email><%= user.getEmail()%></email>
+		</user>
+<%	
+	}
+%>
+	</login>
 	<poll>
 <%
 	// fetch the selected poll's ID
@@ -32,13 +48,22 @@
 			String[] result = request.getParameterValues("timeOption");
 			String voterName = request.getParameter("name");
 			if (result != null && voterName != null)
-				conferApp.addResponse(pollID, voterName, result);
+			{
+				if (!poll.alreadyResponse(voterName))
+					conferApp.addResponse(pollID, voterName, result);
+				else {
+%>
+		<error>You already vote</error>
+<%
+				}
+			}
 %>
 		<id><%=poll.getId() %></id>
 		<title><%=poll.getTitle() %></title>
 		<creatorName><%=poll.getCreatorName() %></creatorName>
 		<creationDate><%=poll.getCreationDate() %></creationDate>
 		<location><%=poll.getLocation() %></location>
+		<status><%= poll.getStatus() %></status>
 		<description><%=poll.getDescription() %></description>
 		<timeOptions>
 <%
@@ -54,6 +79,17 @@
 <%			} %>
 		</timeOptions>
 		<totalResponse><%=poll.getResponseCount() %></totalResponse>
+		<responsers>
+<%
+			ArrayList<String> responsers = poll.getResponsers();
+			for (String name: responsers)
+			{
+%>               
+			<responser><%= name%></responser>     
+<%
+			}
+%>	
+		</responsers>
 		<highestResponses>
 <%
 			int highest = 0;

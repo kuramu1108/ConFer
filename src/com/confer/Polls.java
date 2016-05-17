@@ -64,7 +64,9 @@ public class Polls implements Serializable {
 	
 	public void addPoll(Poll poll)
 	{
-		list.put(poll.getId(), poll);
+		String id = Integer.toString(count);
+		poll.setId(id);
+		list.put(id, poll);
 		count++;
 	}
 	

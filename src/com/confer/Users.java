@@ -37,6 +37,14 @@ public class Users implements Serializable {
     	return null;
     }
     
+    // get user by email
+    public User getUser(String email) {
+        for (User user : list) {
+            if (user.getEmail().equals(email))
+                return user; // user found. Return this user.
+        }
+        return null; // user not found. Return null.
+    }
     
     // accessor, mutator and list add/remover functinos ====================
 	public ArrayList<User> getList() {
