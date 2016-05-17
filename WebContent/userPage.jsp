@@ -30,6 +30,8 @@
 		}
 	}
 	else {
+		// different operation according to state value, which are passed from the origin page
+		// logout is selected in previous page
 		if (state.equals("logout"))
 		{
 %>
@@ -38,6 +40,7 @@
 <%
 			session.removeAttribute("user");
 		}
+		// login detail is provided from previous page
 		else if (state.equals("login"))
 		{
 			String email = request.getParameter("email");
@@ -56,9 +59,19 @@
 				session.setAttribute("user", user_current);
 			}
 		}
+		// a poll is being closed in previous page
 		else if (state.equals("closePoll"))
 		{
 			conferApp.closePoll(request.getParameter("pollID"));
+		}
+		else if (state.equals("createPoll"))
+		{
+			String title = request.getParameter("title");
+			String location = request.getParameter("location");
+			String des = request.getParameter("description");
+			String[] timeOptions = request.getParameterValues("timeOption");
+			String creationDate = request.getParameter("creationDate");
+			conferApp.addPoll(title, user.getEmail(), user.getUsername(), creationDate, "OPEN", location, des, new ArrayList<String>(Arrays.asList(timeOptions)));
 		}
 	}
 %>
@@ -80,6 +93,10 @@
 				sortedPolls.sort(new PollStatusComparator());
 			else if (sort.equals("date"))
 				sortedPolls.sort(new PollDateComparator());
+			else
+				sort = "date";
+		} else {
+			sort = "date";
 		}
 		for (Poll poll: sortedPolls) {
 %>

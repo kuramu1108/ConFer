@@ -15,35 +15,26 @@
 	<jsp:setProperty name="conferApp" property="pollFilePath" value="<%=pollFilePath %>"/>
 </jsp:useBean>
 <%
-	/* String[] result = request.getParameterValues("timeOption");
-	String id = request.getParameter("id");
-	String voterName = request.getParameter("name"); */
 	String[] timeOptions = request.getParameterValues("timeOption");
 	String des = request.getParameter("description");
-	String email = request.getParameter("email");
-	String password = request.getParameter("password");
+	String creationDate = request.getParameter("creationDate");
+	//String email = request.getParameter("email");
+	//String password = request.getParameter("password");
 %>
 <body>
 <p>
 <%
-	/* out.println(id);
-	out.println(voterName);
-	for (String option: result)
-	{
-		out.println(option);
-	}
-	conferApp.addResponse(id, voterName, result); 
-	*/
+	out.println(creationDate);
 	
-	/* for(String option: timeOptions)
+	for(String option: timeOptions)
 	{
 		out.println(option);
 	}
 	
-	out.println(des); */
+	out.println(des);
 	
-	out.println("<br>email: " + email);
-	out.println("<br>password: " + password);
+	/* out.println("<br>email: " + email);
+	out.println("<br>password: " + password); */
 	
 %>
 </p>
