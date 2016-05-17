@@ -36,10 +36,9 @@ public class Poll implements Serializable {
 	}
 	
 	// constructor that initialize timeOptions and responses
-	public Poll(String id, String title, String creatorEmail, String creatorName, String creationDate,
+	public Poll(String title, String creatorEmail, String creatorName, String creationDate,
 			String status, String location, String description) {
 		super();
-		this.id = id;
 		this.title = title;
 		this.creatorEmail = creatorEmail;
 		this.creatorName = creatorName;
@@ -52,11 +51,10 @@ public class Poll implements Serializable {
 	}
 	
 	// constructor with timeOptions provided
-	public Poll(String id, String title, String creatorEmail, String creatorName,
+	public Poll(String title, String creatorEmail, String creatorName,
 			String creationDate, String status, String location,
 			String description, ArrayList<String> timeOptions) {
 		super();
-		this.id = id;
 		this.title = title;
 		this.creatorEmail = creatorEmail;
 		this.creatorName = creatorName;

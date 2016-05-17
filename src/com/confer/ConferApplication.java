@@ -61,10 +61,9 @@ public class ConferApplication {
 	public void addPoll(String title, String creatorEmail, String creatorName, String creationDate,
 			String status, String location, String description, ArrayList<String> timeOptions) throws Exception
 	{
-		String id = Integer.toString(polls.getCount());
-		Poll poll = new Poll(id, title, creatorEmail, creatorName, creationDate, status, location, description, timeOptions);
+		Poll poll = new Poll(title, creatorEmail, creatorName, creationDate, status, location, description, timeOptions);
 		polls.addPoll(poll);
-		users.getUser(creatorEmail).addPoll(id);
+		users.getUser(creatorEmail).addPoll(poll.getId());
 		marshallPolls();
 	}
 	

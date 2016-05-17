@@ -24,7 +24,7 @@ public class TestJAXB implements Serializable {
 			m.marshal(users, System.out);
 		} else if (testPoll) {
 			Polls polls = new Polls();
-			Poll poll = new Poll(Integer.toString(polls.getCount()), "First meeting",
+			Poll poll = new Poll("First meeting",
 					"colagarychen@gmail.com", "Po", "01/04/2016", "OPEN", "B11",
 					"meeting for WSD");
 			poll.addTimeOption("04/05/2016 6:00");
@@ -55,7 +55,7 @@ public class TestJAXB implements Serializable {
 			users.addUser(new User("kuramu1108@gmail.com", "kuramu", "abccd1234"));
 			
 			Polls polls = new Polls();
-			Poll poll = new Poll(Integer.toString(polls.getCount()), "First meeting",
+			Poll poll = new Poll("First meeting",
 					"colagarychen@gmail.com", "Po", "01/04/2016", "OPEN", "B11",
 					"meeting for WSD");
 			poll.addTimeOption("04/05/2016 6:00");
@@ -67,7 +67,7 @@ public class TestJAXB implements Serializable {
 //			poll.addResponse(response);
 			polls.addPoll(poll);
 			
-			Poll poll2 = new Poll(Integer.toString(polls.getCount()), "Second meeting",
+			Poll poll2 = new Poll("Second meeting",
 					"colagarychen@gmail.com", "Po", "01/04/2016", "CLOSE", "B04",
 					"meeting for WSD");
 			poll2.addTimeOption("04/05/2016 6:00");
@@ -89,9 +89,9 @@ public class TestJAXB implements Serializable {
 //					System.out.println(entry.getValue().getTitle());
 //				}
 //			}
-//			Polls result = new Polls(search);
+			Polls result = new Polls(search);
 //			System.out.println("complete");
-			Polls result = new Polls(confer.getOpenPolls());
+//			Polls result = new Polls(confer.getOpenPolls());
 			JAXBContext jc = JAXBContext.newInstance(Polls.class);
 			StringWriter sw = new StringWriter();
 			Marshaller m = jc.createMarshaller();
