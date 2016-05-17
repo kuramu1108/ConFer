@@ -139,7 +139,7 @@
 
 				<div class="form-group">
 					<label for="voterName">Voter Full Name: <span style="color:red">*</span></label>
-					<div>
+					<div id="name-div">
 						<input type="text" class="form-control" style="width: 300px;"
 							id="name" name="name"/>
 					</div>
@@ -162,7 +162,7 @@
 	</xsl:template>
 
 	<xsl:template match="timeOptions">
-		<div class="form">
+		<div class="form" id="timeOptions-div">
 			<xsl:apply-templates select="timeOption"/>
 		</div>
 	</xsl:template>
