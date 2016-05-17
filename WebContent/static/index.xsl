@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  		<script src="custom_js/validate.js"></script>
 	<style>
 	</style>
 </head>
@@ -73,7 +74,7 @@
 		<xsl:when test="user">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="userPage.jsp"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-				<li><a href="userPage.jsp?state=logOut"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+				<li><a href="userPage.jsp?state=logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
 			</ul>
 		</xsl:when>
 		<xsl:otherwise>
@@ -103,17 +104,17 @@
 							<div class="modal-body">
 								<div class="container">
 									<h2 align="left">Login</h2>
-									<form class="form-horizontal" role="form" method="POST" action="testRequest.jsp" id="loginForm">
+									<form class="form-horizontal" role="form" method="POST" action="userPage.jsp?state=login" id="loginForm" onsubmit="return validateLogin();">
 										<div class="form-group">
-											<label class="control-label col-sm-2" for="email">Email:</label>
-											<div class="col-sm-4">
+											<label class="control-label col-sm-2" for="email">Email: <span style='color:red'>*</span></label>
+											<div class="col-sm-4" id="email-div">
 												<input type="text" class="form-control" id="email" name="email"
 													placeholder="Enter email" />
 											</div>
 										</div>
 			
-										<div class="form-group">
-											<label class="control-label col-sm-2" for="pwd">Password:</label>
+										<div class="form-group" id="password-div">
+											<label class="control-label col-sm-2" for="pwd">Password: <span style='color:red'>*</span></label>
 											<div class="col-sm-4">
 												<input type="password" class="form-control" id="password" name="password"
 													placeholder="Enter password" />
