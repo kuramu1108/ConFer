@@ -195,6 +195,6 @@
 	</xsl:template>
 	
 	<xsl:template match="error">
-		<p>The poll you are looking for is not in the record<br></br>or you haven't select a poll<br></br>ERROR: <xsl:apply-templates/></p>
+		<p>Oops! seems like something wrong happened<br></br>ERROR: <xsl:apply-templates/></p>
 	</xsl:template>
 </xsl:stylesheet>

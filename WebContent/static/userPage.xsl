@@ -106,11 +106,11 @@
 	<xsl:otherwise>
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
-				<div class="navbar-header"><a class="navbar-brand" href="indxe.jsp">ConFer</a></div>
+				<div class="navbar-header"><a class="navbar-brand" href="index.jsp">ConFer</a></div>
 				
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+					<li><a href="?state=logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -123,7 +123,7 @@
 		
 				<div class="container col-sm-6">
 					<div class="btn pull-right">
-						<form action="createPoll.jsp">
+						<form action="createPoll.jsp" method="POST">
 							<input type="submit" style="margin:13px 0 0 0" class="btn btn-default" value="Create"/>
 						</form>
 					</div>
@@ -177,7 +177,7 @@
 <xsl:template match="polls">
 	<tbody>
 		<xsl:for-each select="poll">
-		<tr onclick="location.href = 'votePage.jsp?pollID={value/id}';">
+		<tr onclick="location.href = 'summaryPage.jsp?pollID={id}';">
 	    	<td class="col-sm-6"><xsl:value-of select="title"/></td>
 	        <td class="col-sm-3"><xsl:value-of select="creationDate"/></td>
 	        <td class="col-sm-3"><xsl:value-of select="status"/></td>
