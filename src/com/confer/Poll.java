@@ -68,7 +68,7 @@ public class Poll implements Serializable {
 		this.responses = responses;
 	}
 	
-	// properties
+	// properties ===========================================================
 	public Hashtable<String, Integer> getResult() {
 		Hashtable<String, Integer> result = new Hashtable<String, Integer>();
 		for (String timeOption: timeOptions) {
@@ -81,7 +81,16 @@ public class Poll implements Serializable {
 		}
 		return result;
 	}
-
+	
+	public boolean alreadyResponse(String voterName) {
+		boolean hasResponse = false;
+		for (Response response: responses) {
+			if(response.getName().equals(voterName))
+				hasResponse = true;
+		}
+		return hasResponse;
+	}
+	
 	public int getResponseCount(){
 		return responses.size();
 	}

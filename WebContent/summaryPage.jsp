@@ -32,7 +32,15 @@
 			String[] result = request.getParameterValues("timeOption");
 			String voterName = request.getParameter("name");
 			if (result != null && voterName != null)
-				conferApp.addResponse(pollID, voterName, result);
+			{
+				if (!poll.alreadyResponse(voterName))
+					conferApp.addResponse(pollID, voterName, result);
+				else {
+%>
+		<error>You already vote</error>
+<%
+				}
+			}
 %>
 		<id><%=poll.getId() %></id>
 		<title><%=poll.getTitle() %></title>
