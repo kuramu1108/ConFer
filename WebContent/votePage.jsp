@@ -12,54 +12,64 @@
 	<jsp:setProperty name="conferApp" property="userFilePath" value="<%=userFilePath %>"/>
 	<jsp:setProperty name="conferApp" property="pollFilePath" value="<%=pollFilePath %>"/>
 </jsp:useBean>
-
+<confer>
+	<login>
+<%
+	User user = (User) session.getAttribute("user");
+	if (user != null) {
+%>
+		<user>
+			<email><%= user.getEmail()%></email>
+			<name><%= user.getUsername()%></name>
+		</user>
+<%	
+	} else {
+%>
+		<notLogin></notLogin>
+<%	
+	}
+%>
+	</login>
+	<poll>
 <%
 	// fetch the selected poll's ID
 	String pollID = (String) request.getParameter("pollID");
 	if (pollID == null) {
 %>
-<poll>
-	<error>poll ID not provided</error>
-</poll>
+		<error>poll ID not provided</error>
 <%
 	} else {
 		Poll result = conferApp.getPolls().getPoll(pollID);
 		if (result == null) {
 %>
-<poll>
-	<error>poll not found in database</error>
-</poll>
+		<error>poll not found in database</error>
 <%		
 		} else {
 			if (result.getStatus().equals("CLOSE"))
 			{
 %>
-<poll>
-	<error>poll has been closed</error>
-</poll>
+		<error>poll has been closed</error>
 <%
 			} else {
 %>
-<poll>
-	<id><%=result.getId() %></id>
-	<title><%=result.getTitle() %></title>
-	<creatorName><%=result.getCreatorName() %></creatorName>
-	<creationDate><%=result.getCreationDate() %></creationDate>
-	<location><%=result.getLocation() %></location>
-	<description><%=result.getDescription() %></description>
-	<timeOptions>
+		<id><%=result.getId() %></id>
+		<title><%=result.getTitle() %></title>
+		<creatorName><%=result.getCreatorName() %></creatorName>
+		<creationDate><%=result.getCreationDate() %></creationDate>
+		<location><%=result.getLocation() %></location>
+		<description><%=result.getDescription() %></description>
+		<timeOptions>
 <%
 				ArrayList<String> timeOptions = result.getTimeOptions();
 				for (String timeOption: timeOptions)
 				{
 %>
-		<timeOption><%=timeOption %></timeOption>
+			<timeOption><%=timeOption %></timeOption>
 <%				} %>
-	</timeOptions>
-	
-</poll>
-
+		</timeOptions>
 <% 			} // end of else (ckeck poll status)
 		} // end of else (check poll == null)
 	} // end of else (check pollID) 
 %>
+	</poll>
+</confer>

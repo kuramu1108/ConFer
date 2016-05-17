@@ -13,6 +13,22 @@
 	<jsp:setProperty name="conferApp" property="pollFilePath" value="<%=pollFilePath %>"/>
 </jsp:useBean>
 <confer>
+	<login>
+<%
+	User user = (User)session.getAttribute("user");
+	if (user == null) {
+%>
+		<notLogin></notLogin>
+<%
+	} else {
+%>
+		<user>
+			<email><%= user.getEmail()%></email>
+		</user>
+<%	
+	}
+%>
+	</login>
 	<poll>
 <%
 	// fetch the selected poll's ID

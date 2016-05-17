@@ -15,22 +15,11 @@
 	<login>
 <%
 	String state = request.getParameter("state");
-	if (state.equals("logout"))
-	{
-%>
-		<notLogin>Successfully log out</notLogin>
-		
-<%
-		session.removeAttribute("user");
-	}
-	else if (state.equals("login"))
-	{
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		User user = conferApp.getUsers().login(email, password);
+	User user = (User) session.getAttribute("user");
+	if (state == null) {
 		if (user == null) {
 %>
-		<notLogin>Email/Password incorrect</notLogin>
+		<notLogin></notLogin>
 <%
 		} else {
 %>
@@ -38,26 +27,53 @@
 			<email><%=user.getEmail() %></email>
 		</user>
 <%
-			session.setAttribute("user", user);
+		}
+	}
+	else {
+		if (state.equals("logout"))
+		{
+%>
+		<notLogin>Successfully log out</notLogin>
+		
+<%
+			session.removeAttribute("user");
+		}
+		else if (state.equals("login"))
+		{
+			String email = request.getParameter("email");
+			String password = request.getParameter("password");
+			User user_current = conferApp.getUsers().login(email, password);
+			if (user_current == null) {
+%>
+		<notLogin>Email/Password incorrect</notLogin>
+<%
+			} else {
+%>
+		<user>
+			<email><%=user_current.getEmail() %></email>
+		</user>
+<%
+				session.setAttribute("user", user_current);
+			}
 		}
 	}
 %>
 	</login>
 <%
-	User user = (User) session.getAttribute("user");
-	if (user != null) {
+	User user_after = (User) session.getAttribute("user");
+	if (user_after != null) {
 %>
 	<polls>
 <%
-		Hashtable<String, Poll> polls = conferApp.getUsersPolls(user.getEmail());
+		Hashtable<String, Poll> polls = conferApp.getUsersPolls(user_after.getEmail());
 		ArrayList<Poll> sortedPolls = new ArrayList<Poll>(polls.values());
 		String sort = request.getParameter("sort");
 		// array sorting
 		if (sort != null){
 			if (sort.equals("title")) 
 				sortedPolls.sort(new PollTitleComparator());
-			else if (sort.equals("creatorName"))
-				sortedPolls.sort(new PollCreatorComparator());
+			else if (sort.equals("status"))
+				sortedPolls.sort(new PollStatusComparator());
 			else if (sort.equals("date"))
 				sortedPolls.sort(new PollDateComparator());
 		}
