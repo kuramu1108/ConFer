@@ -109,10 +109,10 @@
 						<button type="submit" class="btn btn-info">Back to vote page</button>
 					</form>
 					<xsl:choose>
-						<xsl:when test="/confer/login/user">
-							<form role="form" method="PUT" action="testRequest.jsp" style="float:left; margin-left:50px">
+						<xsl:when test="/confer/login/user and status='OPEN'">
+							<form role="form" method="PUT" action="userPage.jsp" style="float:left; margin-left:50px">
+								<input type="hidden" name="state" value="closePoll"/>
 								<input type="hidden" name="pollID" value="{id}"/>
-								<input type="hidden" name="status" value="close"/>
 								<button type="submit" class="btn btn-danger">Close the Poll</button>
 							</form>
 						</xsl:when>

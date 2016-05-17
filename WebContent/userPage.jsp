@@ -56,6 +56,10 @@
 				session.setAttribute("user", user_current);
 			}
 		}
+		else if (state.equals("closePoll"))
+		{
+			conferApp.closePoll(request.getParameter("pollID"));
+		}
 	}
 %>
 	</login>

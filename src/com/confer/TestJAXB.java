@@ -64,7 +64,7 @@ public class TestJAXB implements Serializable {
 			Response response = new Response("Raymond");
 			response.addTimeSelected("04/05/2016 6:00");
 			response.addTimeSelected("04/05/2016 14:00");
-			poll.addResponse(response);
+//			poll.addResponse(response);
 			polls.addPoll(poll);
 			
 			Poll poll2 = new Poll(Integer.toString(polls.getCount()), "Second meeting",

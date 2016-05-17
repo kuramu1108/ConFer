@@ -63,6 +63,7 @@
 		<creatorName><%=poll.getCreatorName() %></creatorName>
 		<creationDate><%=poll.getCreationDate() %></creationDate>
 		<location><%=poll.getLocation() %></location>
+		<status><%= poll.getStatus() %></status>
 		<description><%=poll.getDescription() %></description>
 		<timeOptions>
 <%
