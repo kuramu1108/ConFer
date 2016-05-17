@@ -1,12 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%><%@ page import="java.util.*, com.confer.*"%>
-    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="static/userPage.xsl"?>
+<%@ page language="java" contentType="application/xml" pageEncoding="UTF-8" %>
+<%@ page import="java.util.*, com.confer.*, com.confer.utility.*"%>
+
 <% 
 	String userFilePath = application.getRealPath("WEB-INF/users.xml");
 	String pollFilePath = application.getRealPath("WEB-INF/polls.xml");
@@ -15,20 +11,67 @@
 	<jsp:setProperty name="conferApp" property="userFilePath" value="<%=userFilePath %>"/>
 	<jsp:setProperty name="conferApp" property="pollFilePath" value="<%=pollFilePath %>"/>
 </jsp:useBean>
+<confer>
+	<login>
 <%
-if (request.getParameter("state").equals("logOut"))
-{
-	out.println("you are not logged in");
-	session.removeAttribute("user");
-}
-else
-{
-User user = (User)session.getAttribute("user");	
-out.println(user.getEmail());
-}
+	String state = request.getParameter("state");
+	if (state.equals("logout"))
+	{
 %>
-
-<body>
-
-</body>
-</html>
+		<notLogin>Successfully log out</notLogin>
+		
+<%
+		session.removeAttribute("user");
+	}
+	else if (state.equals("login"))
+	{
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		User user = conferApp.getUsers().login(email, password);
+		if (user == null) {
+%>
+		<notLogin>Email/Password incorrect</notLogin>
+<%
+		} else {
+%>
+		<user>
+			<email><%=user.getEmail() %></email>
+		</user>
+<%
+			session.setAttribute("user", user);
+		}
+	}
+%>
+	</login>
+<%
+	User user = (User) session.getAttribute("user");
+	if (user != null) {
+%>
+	<polls>
+<%
+		Hashtable<String, Poll> polls = conferApp.getUsersPolls(user.getEmail());
+		ArrayList<Poll> sortedPolls = new ArrayList<Poll>(polls.values());
+		String sort = request.getParameter("sort");
+		// array sorting
+		if (sort != null){
+			if (sort.equals("title")) 
+				sortedPolls.sort(new PollTitleComparator());
+			else if (sort.equals("creatorName"))
+				sortedPolls.sort(new PollCreatorComparator());
+			else if (sort.equals("date"))
+				sortedPolls.sort(new PollDateComparator());
+		}
+		for (Poll poll: sortedPolls) {
+%>
+			<poll>
+				<id><%= poll.getId() %></id>
+                <title><%= poll.getTitle() %></title>
+                <creationDate><%= poll.getCreationDate() %></creationDate>
+                <status><%= poll.getStatus() %></status>
+			</poll>
+<%
+		}
+%>
+	</polls>
+<%	}	%>
+</confer>
