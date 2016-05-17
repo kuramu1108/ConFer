@@ -54,6 +54,17 @@
 <%			} %>
 		</timeOptions>
 		<totalResponse><%=poll.getResponseCount() %></totalResponse>
+		<responsers>
+<%
+			ArrayList<String> responsers = poll.getResponsers();
+			for (String name: responsers)
+			{
+%>               
+			<responser><%= name%></responser>     
+<%
+			}
+%>	
+		</responsers>
 		<highestResponses>
 <%
 			int highest = 0;

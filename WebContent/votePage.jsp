@@ -12,6 +12,7 @@
 	<jsp:setProperty name="conferApp" property="userFilePath" value="<%=userFilePath %>"/>
 	<jsp:setProperty name="conferApp" property="pollFilePath" value="<%=pollFilePath %>"/>
 </jsp:useBean>
+
 <%
 	// fetch the selected poll's ID
 	String pollID = (String) request.getParameter("pollID");
@@ -55,6 +56,7 @@
 		<timeOption><%=timeOption %></timeOption>
 <%				} %>
 	</timeOptions>
+	
 </poll>
 
 <% 			} // end of else (ckeck poll status)
