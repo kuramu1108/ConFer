@@ -57,7 +57,7 @@ public class ConferApplication {
 		return new Polls(result);
 	}
 	
-	// adding new entry =================================================================================
+	// adding new entry/modify an entry =================================================================================
 	public void addPoll(String title, String creatorEmail, String creatorName, String creationDate,
 			String status, String location, String description) throws Exception
 	{
@@ -79,6 +79,13 @@ public class ConferApplication {
 		ArrayList<String> times = new ArrayList<String>(Arrays.asList(timeOptions));
 		Response response = new Response(voterName, times);
 		poll.addResponse(response);
+		marshallPolls();
+	}
+	
+	public void closePoll(String pollID) throws Exception
+	{
+		Poll poll = polls.getPoll(pollID);
+		poll.setStatus("CLOSE");
 		marshallPolls();
 	}
 	
