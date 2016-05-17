@@ -12,57 +12,69 @@
 	<jsp:setProperty name="conferApp" property="userFilePath" value="<%=userFilePath %>"/>
 	<jsp:setProperty name="conferApp" property="pollFilePath" value="<%=pollFilePath %>"/>
 </jsp:useBean>
+<confer>
+	<poll>
 <%
 	// fetch the selected poll's ID
 	String pollID = (String) request.getParameter("pollID");
 	if (pollID == null) {
 %>
-<confer>
-<poll>
-	<error>poll ID not provided</error>
-</poll>
-</confer>
+		<error>poll ID not provided</error>
 <%
 	} else {
 		Poll poll = conferApp.getPolls().getPoll(pollID);
 		if (poll == null) {
 %>
-<confer>
-<poll>
-	<error>poll not found in database</error>
-</poll>
-</confer>
+		<error>poll not found in database</error>
 <%		
-		} else {			
+		} else {
+			// poll result not null
 			String[] result = request.getParameterValues("timeOption");
 			String voterName = request.getParameter("name");
-			conferApp.addResponse(pollID, voterName, result);
+			if (result != null && voterName != null)
+				conferApp.addResponse(pollID, voterName, result);
 %>
-<confer>
-<poll>
-	<id><%=poll.getId() %></id>
-	<title><%=poll.getTitle() %></title>
-	<creatorName><%=poll.getCreatorName() %></creatorName>
-	<creationDate><%=poll.getCreationDate() %></creationDate>
-	<location><%=poll.getLocation() %></location>
-	<description><%=poll.getDescription() %></description>
-	<timeOptions>
+		<id><%=poll.getId() %></id>
+		<title><%=poll.getTitle() %></title>
+		<creatorName><%=poll.getCreatorName() %></creatorName>
+		<creationDate><%=poll.getCreationDate() %></creationDate>
+		<location><%=poll.getLocation() %></location>
+		<description><%=poll.getDescription() %></description>
+		<timeOptions>
 <%
-			// poll result not null
+			
 			Hashtable<String, Integer> responses = poll.getResult();
 			for (Map.Entry<String, Integer> entry : responses.entrySet())
 			{
 %>
-		<timeOption>
-			<datetime><%=entry.getKey() %></datetime>
-			<result><%=entry.getValue() %></result>
-		</timeOption>
+			<timeOption>
+				<datetime><%=entry.getKey() %></datetime>
+				<result><%=entry.getValue() %></result>
+			</timeOption>
 <%			} %>
-	</timeOptions>
-	<totalResponse><%=poll.getResponseCount() %></totalResponse>
-</poll>
-</confer>
+		</timeOptions>
+		<totalResponse><%=poll.getResponseCount() %></totalResponse>
+		<highestResponses>
+<%
+			int highest = 0;
+			for (Map.Entry<String, Integer> entry: responses.entrySet())
+			{
+				if (entry.getValue() > highest)
+					highest = entry.getValue();
+			}
+			for (Map.Entry<String, Integer> entry: responses.entrySet())
+			{
+				if (entry.getValue() == highest)
+				{
+%>
+			<highestResponse><%= entry.getKey() %></highestResponse>
+<%				}
+			} // end of for loop for highest response
+%>
+		</highestResponses>
 <% 
 		} // end of else (check poll == null)
 	} // end of else (check pollID) 
 %>
+	</poll>
+</confer>
