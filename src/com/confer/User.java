@@ -5,6 +5,7 @@ import java.util.*;
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "user")
 public class User implements Serializable {
 	@XmlElement(name = "email")
 	private String email;
@@ -28,6 +29,7 @@ public class User implements Serializable {
 		this.pollIDs = new ArrayList<String>();
 	}
 	
+	// accessor, mutator and list add/remove functions =================
 	public String getEmail() {
 		return email;
 	}

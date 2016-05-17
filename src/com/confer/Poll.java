@@ -34,6 +34,8 @@ public class Poll implements Serializable {
 	public Poll() {
 		
 	}
+	
+	// constructor that initialize timeOptions and responses
 	public Poll(String id, String title, String creatorEmail, String creatorName, String creationDate,
 			String status, String location, String description) {
 		super();
@@ -48,7 +50,8 @@ public class Poll implements Serializable {
 		timeOptions = new ArrayList<String>();
 		responses = new ArrayList<Response>();
 	}
-
+	
+	// constructor with timeOptions and responses provided
 	public Poll(String id, String title, String creatorEmail,
 			String creationDate, String status, String location,
 			String description, ArrayList<String> timeOptions,
@@ -64,7 +67,24 @@ public class Poll implements Serializable {
 		this.timeOptions = timeOptions;
 		this.responses = responses;
 	}
+	
+	// properties
+	public Hashtable<String, Integer> getResult() {
+		Hashtable<String, Integer> result = new Hashtable<String, Integer>();
+		for (String timeOption: timeOptions) {
+			result.put(timeOption, 0);
+		}
+		for (Response response: responses) {
+			for (String timeSelected: response.getTimeSelected()) {
+				result.replace(timeSelected, result.get(timeSelected) + 1);
+			}
+		}
+		return result;
+	}
 
+	public int getResponseCount(){
+		return responses.size();
+	}
 
 	// Accessor, mutator and list element add/remove =============================
 	public String getId() {
