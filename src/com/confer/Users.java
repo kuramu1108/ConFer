@@ -46,6 +46,15 @@ public class Users implements Serializable {
         return null; // user not found. Return null.
     }
     
+    // check whether an email is already used (user already registered)
+    public boolean alreadyRegister(String email) {
+    	for (User user : list) {
+    		if (user.getEmail().equals(email))
+    			return true;
+    	}
+    	return false;
+    }
+    
     // accessor, mutator and list add/remover functinos ====================
 	public ArrayList<User> getList() {
         return list;

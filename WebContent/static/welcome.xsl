@@ -3,14 +3,13 @@
 <xsl:template match="/">
 <html>
 <head>
-	<title>Confer - Vote for your meeting</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  		<script src="custom_js/validate.js"></script>
-	<style>
-	</style>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+<title>Welcome Page</title>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
@@ -18,67 +17,8 @@
     		<div class="navbar-header">
       			<a class="navbar-brand" href="index.jsp">ConFer</a>
     		</div>
-<!--        			top right functionality buttons  	below					-->
-			<xsl:apply-templates select="confer/login"/>
-<!--          			top right functionality buttons  	above					--> 
-  		</div>
-	</nav>
- 
- 
-
-	<div class="container col-sm-9">
-		<div style="margin: 0 0 0 35%">
-  			<h2>Open Poll</h2>
-  			<div class="panel-group">
-    			<div class="panel panel-default">
-        			<div class="panel-heading clearfix"> 
-         				<p class="panel-title pull-left" style="padding-top: 7.5px;">Please click on one of these polls </p>
-      						<div class="input-group">
-                    			<div class="input-group-btn">
-                        			<button class="btn btn-inverse pull-right" data-toggle="dropdown"><i class="glyphicon glyphicon-sort"></i></button>
-                        			<ul class="dropdown-menu pull-right">
-                        				<li><a href="?sort=date">Date</a></li>
-                        				<li><a href="?sort=creatorName">Creator Name</a></li>
-                        				<li><a href="?sort=title">Title</a></li>
-                        			</ul>
-                    			</div>
-                			</div>
-     			 	</div>
-      
-      				<div class="panel-body">          
-  						<table class="table table-hover">
-    						<thead>
-				      			<tr>
-				        			<th>Title</th>
-				        			<th>Name</th>
-				        			<th>Creation Date</th>
-				      			</tr>
-				    		</thead>
-				    		<tbody>
-				    <!-- Applying later templates -->
-				      			<xsl:apply-templates select="confer/polls"/>
- 							</tbody>
-	  					</table>
-	  				</div>
-	   			</div>
-	   		</div>
-	    </div>
-	</div>
-</body>
-</html>
-</xsl:template>
-
-<xsl:template match="login">
-
-	<xsl:choose>
-		<xsl:when test="user">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="userPage.jsp"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-				<li><a href="userPage.jsp?state=logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
-			</ul>
-		</xsl:when>
-		<xsl:otherwise>
-			<ul class="nav navbar-nav navbar-right">
+    
+    		<ul class="nav navbar-nav navbar-right">
 				<li>
 					<a href="#" data-toggle="modal" data-target="#signupModal">
 						<span class="glyphicon glyphicon-user"></span>
@@ -173,18 +113,27 @@
 					</div>
 				</div>
 			</ul>
-		</xsl:otherwise>
-	</xsl:choose>
-</xsl:template>
-
-
-<xsl:template match="polls">
-	<xsl:for-each select="list/entry">
-	<tr onclick="location.href = 'votePage.jsp?pollID={value/id}';">
-		<td><xsl:value-of select="value/title"/></td>
-		<td><xsl:value-of select="value/creatorName"/></td>
-		<td><xsl:value-of select="value/creationDate"/></td>
-	</tr>
-	</xsl:for-each>
+  		</div>
+	</nav>
+	<div align="center">
+		<xsl:choose>
+			<xsl:when test="confer/signup/fail">
+				<h1 style="font-size:60px; margin-top:100px">Fail to Register</h1>
+				<h4>- <xsl:value-of select="confer/signup/email"/> is already used</h4>
+				<button type="submit" class="btn btn-inverse" data-toggle="modal" data-target="#signupModal">Try different Email?</button>
+				<p style="margin-top:10px"> Or </p>
+				<button type="submit" class="btn btn-inverse" data-toggle="modal" data-target="#loginModal">Login as an User</button>
+			</xsl:when>
+			<xsl:otherwise>
+				<h1 style="font-size:60px; margin-top:100px">Welcome to Confer, <xsl:value-of select="confer/signup/name"/></h1>
+				<h4>- A Place to Vote for Your Meetings</h4>
+				<button type="submit" class="btn btn-inverse" data-toggle="modal" data-target="#loginModal">Login</button>
+				<p style="margin-top:10px"> Or </p>
+				<button type="submit" class="btn btn-inverse" onclick="location.href='index.jsp';">View some polls</button>
+			</xsl:otherwise>
+		</xsl:choose>
+	</div>
+</body>
+</html>
 </xsl:template>
 </xsl:stylesheet>

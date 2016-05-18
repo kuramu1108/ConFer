@@ -33,7 +33,7 @@ ul
 	<!--        			top right functionality buttons  	below					-->
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="#">
+						<a href="#" data-toggle="modal" data-target="#signupModal">
 							<span class="glyphicon glyphicon-user"></span>
 							Sign Up
 						</a>
@@ -44,7 +44,47 @@ ul
 							Login
 						</a>
 					</li>
-				
+					<!-- Signup modal content-->
+	    			<div id="signupModal" class="modal fade" role="dialog">
+	  					<div class="modal-dialog">
+	    					<div class="modal-content">
+	      						<div class="modal-header">
+	       							<button type="button" class="close" data-dismiss="modal">x</button>
+	        						<h4 class="modal-title">Start creating poll today?</h4>
+	      						</div>
+	      						<div class="modal-body">
+	      							<div class="container">
+	  									<h2 align="left">Sign Up</h2>
+	  									<form class="form-horizontal" role="form" method="POST" action="welcome.jsp" id="signupForm" onsubmit="return validateSignup();">
+	    										<div class="form-group">
+	      											<label class="control-label col-sm-2" for="signupEmail">Email: <span style='color:red'>*</span></label>
+	      											<div class="col-sm-4" id="signupEmail-div">
+	        											<input type="text" class="form-control" id="signupEmail" name="signupEmail" placeholder="Enter email"/>
+	      											</div>
+	    										</div>
+	        									<div class="form-group">
+	      											<label class="control-label col-sm-2" for="signupPassword">Password: <span style='color:red'>*</span></label>
+	      											<div class="col-sm-4" id="signupPassword-div">          
+	        											<input type="password" class="form-control" id="signupPassword" name="signupPassword" placeholder="Enter password"/>
+	      											</div>
+	    										</div>
+	    										<div class="form-group">
+	      											<label class="control-label col-sm-2" for="signupName">Name: <span style='color:red'>*</span></label>
+	      											<div class="col-sm-4" id="signupName-div">          
+	        											<input type="text" class="form-control" id="signupName" name="signupName" placeholder="Enter Preferred Name"/>
+	      											</div>
+	    										</div>
+	    									</form>
+	    								</div>
+	      
+	      								<div class="modal-footer">
+	      	 								<button type="submit" class="btn btn-default" form="signupForm">Submit</button>
+	        								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      								</div>
+	    						</div>
+	  						</div>
+						</div>
+					</div>
 					<!-- Login modal content -->
 					<div id="loginModal" class="modal fade" role="dialog">
 						<div class="modal-dialog">

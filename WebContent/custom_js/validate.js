@@ -107,6 +107,32 @@ function validateLogin()
 	return true;
 }
 
+function validateSignup()
+{
+	var email = document.getElementById("signupEmail").value;
+	var password = document.getElementById("signupPassword").value;
+	var name = document.getElementById("signupName").value;
+	
+	if (email == "" || password == "" || name == "")
+	{
+		$("#error-message").fadeOut('fast').remove();
+	    var html = $("<span id='error-message' style='color:red'>* fields are required</span>");
+        html.appendTo('#signupName-div');
+		return false;
+	}
+	
+	var email_re = new RegExp("[a-z0-9\.]+@[a-z]+(\.[a-z]+)+");
+	if (!email.match(email_re))
+	{
+//		alert("invalid email address");
+		$("#error-message").fadeOut('fast').remove();
+	    var html = $("<span id='error-message' style='color:red'>Invalid Email address</span>");
+        html.appendTo('#signupEmail-div');
+		return false;
+	}
+	return true;
+}
+
 function validateVote()
 {
 	var timeOptions = document.getElementsByName("timeOption");
