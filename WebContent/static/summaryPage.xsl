@@ -200,7 +200,7 @@
       						<div class="modal-body">
       							<div class="container">
   									<h2 align="left">Sign Up</h2>
-  									<form class="form-horizontal" role="form" method="POST" action="_testRequest.jsp" id="signupForm" onsubmit="return validateSignup();">
+  									<form class="form-horizontal" role="form" method="POST" action="welcome.jsp" id="signupForm" onsubmit="return validateSignup();">
     										<div class="form-group">
       											<label class="control-label col-sm-2" for="signupEmail">Email: <span style='color:red'>*</span></label>
       											<div class="col-sm-4" id="signupEmail-div">
