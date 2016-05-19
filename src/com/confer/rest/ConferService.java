@@ -26,7 +26,7 @@ public class ConferService {
 		}
 	}
 	
-	/* localhost:8080/Confer/rest/confer/polls
+	/* localhost:8080/{projectname}/rest/confer/polls
 	 * optional query parameters: status, minResponse
 	 * fetch polls data in xml format
 	 * 
@@ -52,7 +52,7 @@ public class ConferService {
 		}
 	}
 	
-	/* localhost:8080/Confer/rest/confer/polls/{creatorID}
+	/* localhost:8080/{projectname}/rest/confer/polls/{creatorID}
 	 * optional query parameters: status, minResponse
 	 * fetch polls data of a specific user in xml format
 	 * 
@@ -78,7 +78,10 @@ public class ConferService {
 		}
 	}
 	
-	
+	/* Debug function
+	 * test whether REST service is working
+	 * 
+	 */
 	@Path("hello")
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
