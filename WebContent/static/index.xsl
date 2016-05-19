@@ -28,7 +28,7 @@
 
 	<div class="container col-sm-9">
 		<div style="margin: 0 0 0 35%">
-  			<h2>Open Poll</h2>
+  			<h2>Open Polls</h2>
   			<div class="panel-group">
     			<div class="panel panel-default">
         			<div class="panel-heading clearfix"> 
