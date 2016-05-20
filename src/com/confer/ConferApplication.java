@@ -86,7 +86,8 @@ public class ConferApplication {
 	public void closePoll(String pollID) throws Exception
 	{
 		Poll poll = polls.getPoll(pollID);
-		poll.setStatus("CLOSE");
+		if (poll != null) 
+			poll.setStatus("CLOSE");
 		marshallPolls();
 	}
 	
