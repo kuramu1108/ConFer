@@ -22,12 +22,6 @@
 		</xs:restriction>
 	</xs:simpleType>
 
-	<xs:simpleType name="fullName">
-		<xs:restriction base="xs:string">
-			<xs:pattern value="([A-Z][a-z]+ *)+" />
-		</xs:restriction>
-	</xs:simpleType>
-
 	<xs:simpleType name="email">
 		<xs:restriction base="xs:string">
 			<xs:pattern value="[a-zA-Z\._0-9]+@[a-z]+(\.[a-z]+)+" />
@@ -74,7 +68,7 @@
 																	maxOccurs="unbounded">
 																	<xs:complexType>
 																		<xs:sequence>
-																			<xs:element name="name" type="fullName" />
+																			<xs:element name="name" type="xs:string" />
 																			<xs:element name="times">
 																				<xs:complexType>
 																					<xs:sequence>

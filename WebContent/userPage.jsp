@@ -19,7 +19,7 @@
 	if (state == null) {
 		if (user == null) {
 %>
-		<notLogin></notLogin>
+		<notLogin>You are not logged in</notLogin>
 <%
 		} else {
 %>

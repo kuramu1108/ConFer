@@ -10,12 +10,6 @@
 		</xs:restriction>
 	</xs:simpleType>
 
-	<xs:simpleType name="username">
-		<xs:restriction base="xs:string">
-			<xs:pattern value="[a-zA-Z0-9]+" />
-		</xs:restriction>
-	</xs:simpleType>
-
 	<xs:simpleType name="email">
 		<xs:restriction base="xs:string">
 			<xs:pattern value="[a-zA-Z\._0-9]+@[a-z]+(\.[a-z]+)+" />
@@ -33,7 +27,7 @@
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="email" type="email" />
-							<xs:element name="username" type="username" />
+							<xs:element name="username" type="xs:string" />
 							<xs:element name="password" type="password" />
 							<xs:element name="pollIDs">
 								<xs:complexType>
