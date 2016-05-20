@@ -130,6 +130,15 @@ function validateSignup()
         html.appendTo('#signupEmail-div');
 		return false;
 	}
+	
+	var password_re = new RegExp("[a-zA-Z0-9]{4,12}");
+	if (!password.match(password_re))
+	{
+		$("#error-message").fadeOut('fast').remove();
+	    var html = $("<span id='error-message' style='color:red'>use 4 to 12 alpha letters or numbers</span>");
+        html.appendTo('#signupPassword-div');
+		return false;
+	}
 	return true;
 }
 
