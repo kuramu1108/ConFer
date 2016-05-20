@@ -13,6 +13,7 @@
 					src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 				<script
 					src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+				<script src="custom_js/validate.js"></script>
 				<title>Summary</title>
 			</head>
 			<body>
@@ -35,8 +36,13 @@
 
 	<xsl:template match="poll">
 	<xsl:choose>
-		<xsl:when test="id">
-		<div class="container com-sm-12">
+		<xsl:when test="error">
+			<div class="container com-sm-12">
+				<xsl:apply-templates select="error"/>
+			</div>
+		</xsl:when>
+		<xsl:otherwise>
+			<div class="container com-sm-12">
 				<div class="form-group">
 					<label for="title">Title:</label>
 					<div>
@@ -118,11 +124,6 @@
 						</xsl:when>
 					</xsl:choose>
 				</div>
-		</div>
-		</xsl:when>
-		<xsl:otherwise>
-			<div class="container com-sm-12">
-				<xsl:apply-templates select="error"/>
 			</div>
 		</xsl:otherwise>
 		</xsl:choose>
