@@ -64,8 +64,8 @@ public class ConferService {
 		ConferApplication conferApp = getConferApp();
 		Hashtable<String, Poll> pollTable = conferApp.getUsersPolls(creatorID);
 		if (status == null && minResponse == 0) {
-			// no query parameter provided, return all the open polls
-			return conferApp.filterPollsWithQuery(pollTable, true, false, "OPEN", 0);
+			// no query parameter provided, return all the polls
+			return conferApp.filterPollsWithQuery(pollTable, false, false, "", 0);
 		} else if (status != null && minResponse == 0) {
 			// provided status value
 			return conferApp.filterPollsWithQuery(pollTable, true, false, status, 0);

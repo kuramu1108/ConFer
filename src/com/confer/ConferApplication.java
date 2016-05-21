@@ -51,6 +51,8 @@ public class ConferApplication {
 				} else if (statusFlag && !minResponseFlag) {
 					if (poll.getStatus().equals(status))
 						result.put(entry.getKey(), poll);
+				} else {
+					return new Polls(list);
 				}
 			}
 		}
