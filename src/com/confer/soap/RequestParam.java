@@ -26,7 +26,7 @@ public class RequestParam implements Serializable {
 	}
 	
 	public boolean containsParam() {
-		return creatorID != null && status != null && minResponse != 0; 
+		return creatorID != null || status != null || minResponse != 0; 
 	}
 
 	public String getCreatorID() {

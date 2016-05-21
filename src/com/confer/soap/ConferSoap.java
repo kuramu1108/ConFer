@@ -124,10 +124,9 @@ public class ConferSoap {
 			if (user != null) {
 				for (String idEntry: user.getPollIDs()) {
 					if (idEntry.equals(pollID))
-						conferApp.closePoll(pollID);
+						conferApp.closePoll(pollID); // only executed if login detail are correct
 				}
 			}
-			conferApp.closePoll(pollID);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
