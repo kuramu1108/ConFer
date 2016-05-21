@@ -107,13 +107,26 @@
 							</div>
 						</div>
 					</div>
-					<form action="index.jsp">
-						<button type="submit" class="btn btn-default">Back to home page</button>
-					</form>
-					<form role="form" method="GET" action="votePage.jsp" style="float:left">
-						<input type="hidden" name="pollID" value="{id}"/>
-						<button type="submit" class="btn btn-info">Back to vote page</button>
-					</form>
+					<xsl:choose>
+						<xsl:when test="/confer/login/user">
+							<form action="userPage.jsp">
+								<button type="submit" class="btn btn-default">Back to home page</button>
+							</form>
+						</xsl:when>
+						<xsl:otherwise>
+							<form action="index.jsp">
+								<button type="submit" class="btn btn-default">Back to home page</button>
+							</form>
+						</xsl:otherwise>
+					</xsl:choose>
+					<xsl:choose>
+						<xsl:when test="status='OPEN'">
+							<form role="form" method="GET" action="votePage.jsp" style="float:left">
+								<input type="hidden" name="pollID" value="{id}"/>
+								<button type="submit" class="btn btn-info">Back to vote page</button>
+							</form>
+						</xsl:when>
+					</xsl:choose>
 					<xsl:choose>
 						<xsl:when test="/confer/login/user and status='OPEN'">
 							<form role="form" method="PUT" action="userPage.jsp" style="float:left; margin-left:50px">
