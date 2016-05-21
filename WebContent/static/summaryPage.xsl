@@ -128,7 +128,7 @@
 						</xsl:when>
 					</xsl:choose>
 					<xsl:choose>
-						<xsl:when test="/confer/login/user and status='OPEN'">
+						<xsl:when test="/confer/login/user and status='OPEN' and /confer/login/user = creatorEmail">
 							<form role="form" method="PUT" action="userPage.jsp" style="float:left; margin-left:50px">
 								<input type="hidden" name="state" value="closePoll"/>
 								<input type="hidden" name="pollID" value="{id}"/>
