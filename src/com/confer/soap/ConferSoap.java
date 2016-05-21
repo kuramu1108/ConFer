@@ -1,5 +1,6 @@
 package com.confer.soap;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.annotation.Resource;
@@ -39,17 +40,20 @@ public class ConferSoap {
 	
 	/* create poll, return pollID if create successfully
 	 * supply User email, password
-	 * Poll title, craeationDate, location, description, timeOptions in ArrayList
+	 * Poll title, location, description and timeOptions in ArrayList
 	 */
 	@WebMethod
 	public String createPoll(
 			String email, String password,
-			String title, String creationDate, String location, String description, ArrayList<String> timeOptions) {
+			String title, String location, String description, ArrayList<String> timeOptions) {
 		try {
 			ConferApplication conferApp = getConferApp();
 			User user = conferApp.getUsers().login(email, password);
 			if (user != null) // if login successful
 			{
+				SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+				Date today = new Date();
+				String creationDate = formatter.format(today);
 				conferApp.addPoll(
 						title, email, 
 						user.getUsername(), creationDate, 
