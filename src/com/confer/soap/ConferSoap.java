@@ -69,37 +69,43 @@ public class ConferSoap {
 		}
 	}
 	
-	/* view a list of poll
+	/* view a list of poll 
 	 * creatorID, status, minResponse are optional
+	 * if no request contain no parameter, return all the open polls
 	 */
 	@WebMethod
-	public Polls getPolls(
-			@WebParam(name="creatorID") String creatorID, 
-			@WebParam(name="status") String status,
-			@WebParam(name="minRespose") int minResponse) {
+	public Polls getPolls(RequestParam param) {
 		try {
 			ConferApplication conferApp = getConferApp();
 			Hashtable<String, Poll> pollTable;
-			if (creatorID == null) {
-				// no creatorID value provided. fetch all the open polls
-				pollTable = conferApp.getOpenPolls();
+			if (param.containsParam()) {
+				String creatorID = param.getCreatorID();
+				String status = param.getStatus();
+				int minResponse = param.getMinResponse();
+				
+				if (creatorID == null) {
+					// no creatorID value provided. fetch all the polls
+					pollTable = conferApp.getPolls().getList();
+				} else {
+					// fetch user's polls, return empty table if user not found/user has no polls
+					pollTable = conferApp.getUsersPolls(creatorID);
+				}
+				
+				if (status == null && minResponse == 0) {
+					// no query parameter provided, return all users polls
+					return conferApp.filterPollsWithQuery(pollTable, false, false, "", 0);
+				} else if (status != null && minResponse == 0) {
+					// provided status value
+					return conferApp.filterPollsWithQuery(pollTable, true, false, status, 0);
+				} else if (status == null && minResponse != 0) {
+					// provided minResponse value
+					return conferApp.filterPollsWithQuery(pollTable, false, true, "", minResponse);
+				} else {
+					// provided both query value
+					return conferApp.filterPollsWithQuery(pollTable, true, true, status, minResponse);
+				}
 			} else {
-				// fetch user's polls, return empty table if user not found/user has no polls
-				pollTable = conferApp.getUsersPolls(creatorID);
-			}
-			
-			if (status == null && minResponse == 0) {
-				// no query parameter provided, return all the open polls
-				return conferApp.filterPollsWithQuery(pollTable, true, false, "OPEN", 0);
-			} else if (status != null && minResponse == 0) {
-				// provided status value
-				return conferApp.filterPollsWithQuery(pollTable, true, false, status, 0);
-			} else if (status == null && minResponse != 0) {
-				// provided minResponse value
-				return conferApp.filterPollsWithQuery(pollTable, false, true, "", minResponse);
-			} else {
-				// provided both query value
-				return conferApp.filterPollsWithQuery(pollTable, true, true, status, minResponse);
+				return new Polls(conferApp.getOpenPolls());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
