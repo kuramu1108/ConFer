@@ -51,6 +51,8 @@ public class ConferApplication {
 				} else if (statusFlag && !minResponseFlag) {
 					if (poll.getStatus().equals(status))
 						result.put(entry.getKey(), poll);
+				} else {
+					return new Polls(list);
 				}
 			}
 		}
@@ -86,7 +88,8 @@ public class ConferApplication {
 	public void closePoll(String pollID) throws Exception
 	{
 		Poll poll = polls.getPoll(pollID);
-		poll.setStatus("CLOSE");
+		if (poll != null) 
+			poll.setStatus("CLOSE");
 		marshallPolls();
 	}
 	

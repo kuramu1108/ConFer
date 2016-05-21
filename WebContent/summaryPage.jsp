@@ -57,11 +57,22 @@
 <%
 				}
 			}
+			
+			if (user.getEmail().equals(poll.getCreatorEmail())) {
+%>
+		<creator></creator>
+<%		
+			} else {
+%>
+		<notCreator></notCreator>
+<%
+			}
 %>
 		<id><%=poll.getId() %></id>
 		<title><%=poll.getTitle() %></title>
 		<creatorName><%=poll.getCreatorName() %></creatorName>
 		<creationDate><%=poll.getCreationDate() %></creationDate>
+		<creatorEmail><%=poll.getCreatorEmail() %></creatorEmail>
 		<location><%=poll.getLocation() %></location>
 		<status><%= poll.getStatus() %></status>
 		<description><%=poll.getDescription() %></description>

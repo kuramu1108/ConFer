@@ -1,5 +1,6 @@
 package com.confer;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.io.*;
 
@@ -7,7 +8,10 @@ import javax.xml.bind.*;
 
 public class TestJAXB implements Serializable {
 	public static void main(String[] args) throws Exception {
-		boolean testUser = false;
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		Date today = new Date();
+		System.out.println(formatter.format(today));
+		/*boolean testUser = false;
 		boolean testPoll = false;
 		if (testUser) {
 			Users users = new Users();
@@ -109,6 +113,6 @@ public class TestJAXB implements Serializable {
 //			m3.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 //			m3.marshal(polls, System.out);
 			
-		}
+		}*/
 	}
 }
