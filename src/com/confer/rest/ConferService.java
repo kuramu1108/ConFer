@@ -27,20 +27,27 @@ public class ConferService {
 	}
 	
 	/* localhost:8080/{projectname}/rest/confer/polls
-	 * optional query parameters: status, minResponse
+	 * optional query parameters: status, minResponse creatorID
 	 * fetch polls data in xml format
 	 * 
 	 */
 	@Path("polls")
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
-	public Polls getPolls(@QueryParam("status") String status, @QueryParam("minResponse") int minResponse) throws Exception {
+	public Polls getPolls(@QueryParam("creatorID") String creatorID, @QueryParam("status") String status, @QueryParam("minResponse") int minResponse) throws Exception {
 		ConferApplication conferApp = getConferApp();
-		Hashtable<String, Poll> pollTable = conferApp.getPolls().getList();
+		Hashtable<String, Poll> pollTable;
 
-		if (status == null && minResponse == 0) { // no query parameter provided, return all the open polls
+		if (status == null && minResponse == 0 && creatorID == null) { // no query parameter provided, return all the open polls
 			return new Polls(conferApp.getOpenPolls());
 		} else {
+			if (creatorID == null)
+				// no creatorID value provided. fetch all the polls
+				pollTable = conferApp.getPolls().getList();
+			else
+				// fetch user's polls, return empty table if user not found/user has no polls
+				pollTable = conferApp.getUsersPolls(creatorID);
+			
 			if (status != null) // provided status value
 				pollTable = conferApp.filterPollsWithStatus(pollTable, status);
 			if (minResponse != 0) // provided minResponse value
@@ -48,35 +55,4 @@ public class ConferService {
 			return new Polls(pollTable);
 		}
 	}
-	
-	/* localhost:8080/{projectname}/rest/confer/polls/{creatorID}
-	 * optional query parameters: status, minResponse
-	 * fetch polls data of a specific user in xml format
-	 * 
-	 */
-	@Path("polls/{creatorID}")
-	@GET
-	@Produces(MediaType.APPLICATION_XML)
-	public Polls getUsersPolls(@PathParam("creatorID") String creatorID,@QueryParam("status") String status, @QueryParam("minResponse") int minResponse) throws Exception {
-		ConferApplication conferApp = getConferApp();
-		Hashtable<String, Poll> pollTable = conferApp.getUsersPolls(creatorID);
-		if (status != null) // provided status value
-			pollTable = conferApp.filterPollsWithStatus(pollTable, status);
-		if (minResponse != 0) // provided minResponse value
-			pollTable = conferApp.filterPollsWithMinResponse(pollTable, minResponse);
-		return new Polls(pollTable);
-	}
-	
-	/* Debug function
-	 * test whether REST service is working
-	 * 
-	 */
-	@Path("hello")
-	@GET
-	@Produces(MediaType.TEXT_PLAIN)
-	public String hello() {
-	 return "Hello World";
-	}
-	
-	
 }
