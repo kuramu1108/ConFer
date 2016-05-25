@@ -63,6 +63,7 @@ public class ConferApplication {
 		polls.addPoll(poll);
 		users.getUser(creatorEmail).addPoll(poll.getId());
 		marshallPolls();
+		marshallUsers();
 	}
 	
 	public void addUser(String email, String username, String password) throws Exception
