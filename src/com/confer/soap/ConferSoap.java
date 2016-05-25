@@ -91,19 +91,11 @@ public class ConferSoap {
 					pollTable = conferApp.getUsersPolls(creatorID);
 				}
 				
-				if (status == null && minResponse == 0) {
-					// no query parameter provided, return all users polls
-					return conferApp.filterPollsWithQuery(pollTable, false, false, "", 0);
-				} else if (status != null && minResponse == 0) {
-					// provided status value
-					return conferApp.filterPollsWithQuery(pollTable, true, false, status, 0);
-				} else if (status == null && minResponse != 0) {
-					// provided minResponse value
-					return conferApp.filterPollsWithQuery(pollTable, false, true, "", minResponse);
-				} else {
-					// provided both query value
-					return conferApp.filterPollsWithQuery(pollTable, true, true, status, minResponse);
-				}
+				if (status != null) // provided status value
+					pollTable = conferApp.filterPollsWithStatus(pollTable, status);
+				if (minResponse != 0) // provided minResponse value
+					pollTable = conferApp.filterPollsWithMinResponse(pollTable, minResponse);
+				return new Polls(pollTable);
 			} else {
 				return new Polls(conferApp.getOpenPolls());
 			}
