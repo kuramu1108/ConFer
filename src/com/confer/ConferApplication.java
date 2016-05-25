@@ -33,30 +33,26 @@ public class ConferApplication {
 		return result;
 	}
 	
-	// filter polls input based on query values
-	public Polls filterPollsWithQuery(Hashtable<String, Poll> list, boolean statusFlag, boolean minResponseFlag, String status, int minResponse)
-	{
+	// filter poll with status parameter
+	public Hashtable<String, Poll> filterPollsWithStatus(Hashtable<String, Poll> list, String status) {
 		Hashtable<String, Poll> result = new Hashtable<String, Poll>();
-		if (list.size() != 0 )
-		{
-			for (Map.Entry<String, Poll> entry: list.entrySet())
-			{
-				Poll poll = entry.getValue();
-				if (statusFlag && minResponseFlag) {
-					if (poll.getStatus().equals(status) && poll.getResponses().size() >= minResponse)
-						result.put(entry.getKey(), poll);
-				} else if (!statusFlag && minResponseFlag) {
-					if (poll.getResponses().size() >= minResponse)
-						result.put(entry.getKey(), poll);
-				} else if (statusFlag && !minResponseFlag) {
-					if (poll.getStatus().equals(status))
-						result.put(entry.getKey(), poll);
-				} else {
-					return new Polls(list);
-				}
-			}
+		for (Map.Entry<String, Poll> entry: list.entrySet()) {
+			Poll poll = entry.getValue();
+			if (poll.getStatus().equals(status))
+				result.put(entry.getKey(), poll);
 		}
-		return new Polls(result);
+		return result;
+	}
+	
+	// filter poll with minimum response parameter
+	public Hashtable<String, Poll> filterPollsWithMinResponse(Hashtable<String, Poll> list, int minResponse) {
+		Hashtable<String, Poll> result = new Hashtable<String, Poll>();
+		for (Map.Entry<String, Poll> entry: list.entrySet()) {
+			Poll poll = entry.getValue();
+			if (poll.getResponseCount() >= minResponse)
+				result.put(entry.getKey(), poll);
+		}
+		return result;
 	}
 	
 	// adding new entry/modify an entry =================================================================================

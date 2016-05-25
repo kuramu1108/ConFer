@@ -58,7 +58,7 @@ public class ConferSoapClient {
 			String pollID2 = confer.createPoll("colagarychen@gmail.com", "abcd123", "testTitle", "loc", "des", timeOptions);
 			System.out.println(pollID2);
 			// test closePoll
-			System.out.println("\nTest closePoll");
+			System.out.println("\nTest closePoll ID: " + pollID);
 			confer.closePoll("colagarychen@gmail.com", "abcd1234", pollID);
 			confer.closePoll("colagarychen@gmail.com", "abcd1234", "5");
 			getOpenPolls(confer);
