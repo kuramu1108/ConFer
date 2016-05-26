@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <polls xmlns="http://www.confer.com/polls" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.confer.com/polls polls.xsd">
-	<count>2</count>
+	<count>11</count>
 	<list>
+		<entry>
+			<key>0</key>
+			<value>
+				<id>0</id>
+				<title>First meeting</title>
+				<creatorEmail>colagarychen@gmail.com</creatorEmail>
+				<creatorName>Po</creatorName>
+				<creationDate>01/04/2016</creationDate>
+				<status>OPEN</status>
+				<location>B11</location>
+				<description>meeting for WSD</description>
+				<timeOptions>
+					<timeOption>04/05/2016 06:00</timeOption>
+					<timeOption>04/05/2016 10:00</timeOption>
+					<timeOption>04/05/2016 14:00</timeOption>
+				</timeOptions>
+				<responses>
+				</responses>
+			</value>
+		</entry>
 		<entry>
 			<key>1</key>
 			<value>
@@ -30,28 +50,333 @@
 				</responses>
 			</value>
 		</entry>
+
 		<entry>
-			<key>0</key>
+			<key>2</key>
 			<value>
-				<id>0</id>
-				<title>First meeting</title>
+				<id>2</id>
+				<title>Group meeting for WSD assignment</title>
+				<creatorEmail>joshua@yahoo.com</creatorEmail>
+				<creatorName>MynameisJosh</creatorName>
+				<creationDate>07/04/2016</creationDate>
+				<status>CLOSE</status>
+				<location>B11.03.202</location>
+				<description>Discussing each member's roles</description>
+				<timeOptions>
+					<timeOption>14/04/2016 18:00</timeOption>
+					<timeOption>15/04/2016 18:00</timeOption>
+					<timeOption>15/04/2016 20:00</timeOption>
+					<timeOption>16/04/2016 18:00</timeOption>
+				</timeOptions>
+				<responses>
+					<response>
+						<name>Martin</name>
+						<times>
+							<timeSelected>14/04/2016 18:00</timeSelected>
+							<timeSelected>16/04/2016 18:00</timeSelected>
+						</times>
+					</response>
+					<response>
+						<name>Luke</name>
+						<times>
+							<timeSelected>15/04/2016 18:00</timeSelected>
+							<timeSelected>15/04/2016 20:00</timeSelected>
+						</times>
+					</response>
+				</responses>
+			</value>
+		</entry>
+		<entry>
+			<key>3</key>
+			<value>
+				<id>3</id>
+				<title>First meeting for our first assignment</title>
+				<creatorEmail>raymondtedja@gmail.com</creatorEmail>
+				<creatorName>rezrl</creatorName>
+				<creationDate>11/04/2016</creationDate>
+				<status>OPEN</status>
+				<location>B11.06.308</location>
+				<description>Group Introduction</description>
+				<timeOptions>
+					<timeOption>21/04/2016 11:00</timeOption>
+					<timeOption>21/04/2016 17:00</timeOption>
+					<timeOption>22/04/2016 19:00</timeOption>
+					<timeOption>23/04/2016 19:00</timeOption>
+					<timeOption>24/04/2016 19:00</timeOption>
+					<timeOption>25/04/2016 19:00</timeOption>
+				</timeOptions>
+				<responses>
+					<response>
+						<name>Jenny</name>
+						<times>
+							<timeSelected>21/04/2016 17:00</timeSelected>
+							<timeSelected>25/04/2016 19:00</timeSelected>
+						</times>
+					</response>
+				</responses>
+			</value>
+		</entry>
+		<entry>
+			<key>4</key>
+			<value>
+				<id>4</id>
+				<title>Group meeting for e-commerce assignment</title>
+				<creatorEmail>ongkydarma@gmail.com</creatorEmail>
+				<creatorName>ongky96</creatorName>
+				<creationDate>11/04/2016</creationDate>
+				<status>OPEN</status>
+				<location>UTS library level 3</location>
+				<description>Tasks distribution</description>
+				<timeOptions>
+					<timeOption>22/04/2016 18:00</timeOption>
+					<timeOption>29/04/2016 18:00</timeOption>
+				</timeOptions>
+				<responses>
+					<response>
+						<name>Jack</name>
+						<times>
+							<timeSelected>22/04/2016 18:00</timeSelected>
+							<timeSelected>29/04/2016 18:00</timeSelected>
+						</times>
+					</response>
+					<response>
+						<name>ongky96</name>
+						<times>
+							<timeSelected>29/04/2016 18:00</timeSelected>
+						</times>
+					</response>
+					<response>
+						<name>felixTj</name>
+						<times>
+							<timeSelected>29/04/2016 18:00</timeSelected>
+						</times>
+					</response>
+					<response>
+						<name>Marcus</name>
+						<times>
+							<timeSelected>22/04/2016 18:00</timeSelected>
+						</times>
+					</response>
+				</responses>
+			</value>
+		</entry>
+		<entry>
+			<key>5</key>
+			<value>
+				<id>5</id>
+				<title>Second meeting for our first assignment</title>
+				<creatorEmail>raymondtedja@gmail.com</creatorEmail>
+				<creatorName>rezrl</creatorName>
+				<creationDate>18/04/2016</creationDate>
+				<status>OPEN</status>
+				<location>B11.06.308</location>
+				<description>Task delegation</description>
+				<timeOptions>
+					<timeOption>01/05/2016 14:00</timeOption>
+					<timeOption>02/05/2016 09:00</timeOption>
+					<timeOption>02/05/2016 19:00</timeOption>
+				</timeOptions>
+				<responses>
+					<response>
+						<name>Jenny</name>
+						<times>
+							<timeSelected>02/05/2016 09:00</timeSelected>
+						</times>
+					</response>
+					<response>
+						<name>Darren</name>
+						<times>
+							<timeSelected>01/05/2016 14:00</timeSelected>
+							<timeSelected>02/05/2016 09:00</timeSelected>
+						</times>
+					</response>
+				</responses>
+			</value>
+		</entry>
+		<entry>
+			<key>6</key>
+			<value>
+				<id>6</id>
+				<title>Third meeting</title>
 				<creatorEmail>colagarychen@gmail.com</creatorEmail>
 				<creatorName>Po</creatorName>
-				<creationDate>01/04/2016</creationDate>
+				<creationDate>27/04/2016</creationDate>
 				<status>OPEN</status>
-				<location>B11</location>
+				<location>B04</location>
 				<description>meeting for WSD</description>
 				<timeOptions>
-					<timeOption>04/05/2016 06:00</timeOption>
-					<timeOption>04/05/2016 10:00</timeOption>
-					<timeOption>04/05/2016 14:00</timeOption>
+					<timeOption>15/05/2016 16:00</timeOption>
+					<timeOption>16/05/2016 18:00</timeOption>
+					<timeOption>17/05/2016 18:00</timeOption>
 				</timeOptions>
 				<responses>
 					<response>
 						<name>Raymond</name>
 						<times>
-							<timeSelected>04/05/2016 06:00</timeSelected>
-							<timeSelected>04/05/2016 14:00</timeSelected>
+							<timeSelected>15/05/2016 16:00</timeSelected>
+							<timeSelected>16/05/2016 18:00</timeSelected>
+						</times>
+					</response>
+				</responses>
+			</value>
+		</entry>
+		<entry>
+			<key>7</key>
+			<value>
+				<id>7</id>
+				<title>Third meeting for our first assignment</title>
+				<creatorEmail>raymondtedja@gmail.com</creatorEmail>
+				<creatorName>rezrl</creatorName>
+				<creationDate>28/04/2016</creationDate>
+				<status>OPEN</status>
+				<location>B11.06.308</location>
+				<description>Review everyone progress</description>
+				<timeOptions>
+					<timeOption>17/05/2016 14:00</timeOption>
+					<timeOption>18/05/2016 09:00</timeOption>
+					<timeOption>18/05/2016 19:00</timeOption>
+					<timeOption>21/05/2016 11:00</timeOption>
+					<timeOption>26/05/2016 13:00</timeOption>
+				</timeOptions>
+				<responses>
+					<response>
+						<name>Jenny</name>
+						<times>
+							<timeSelected>21/05/2016 11:00</timeSelected>
+						</times>
+					</response>
+					<response>
+						<name>Owen</name>
+						<times>
+							<timeSelected>18/05/2016 19:00</timeSelected>
+							<timeSelected>26/05/2016 13:00</timeSelected>
+						</times>
+					</response>
+					<response>
+						<name>Darren</name>
+						<times>
+							<timeSelected>18/05/2016 09:00</timeSelected>
+							<timeSelected>21/05/2016 11:00</timeSelected>
+						</times>
+					</response>
+				</responses>
+			</value>
+		</entry>
+		<entry>
+			<key>8</key>
+			<value>
+				<id>8</id>
+				<title>Group meeting for e-commerce assignment</title>
+				<creatorEmail>ongkydarma@gmail.com</creatorEmail>
+				<creatorName>ongky96</creatorName>
+				<creationDate>01/05/2016</creationDate>
+				<status>OPEN</status>
+				<location>UTS library level 3</location>
+				<description>Review each other progress</description>
+				<timeOptions>
+					<timeOption>16/04/2016 18:00</timeOption>
+					<timeOption>17/04/2016 15:00</timeOption>
+					<timeOption>17/04/2016 18:00</timeOption>
+					<timeOption>21/04/2016 15:00</timeOption>
+					<timeOption>21/04/2016 18:00</timeOption>
+				</timeOptions>
+				<responses>
+					<response>
+						<name>Jack</name>
+						<times>
+							<timeSelected>17/04/2016 15:00</timeSelected>
+							<timeSelected>17/04/2016 18:00</timeSelected>
+						</times>
+					</response>
+					<response>
+						<name>felixTj</name>
+						<times>
+							<timeSelected>21/04/2016 18:00</timeSelected>
+						</times>
+					</response>
+					<response>
+						<name>Marcus</name>
+						<times>
+							<timeSelected>17/04/2016 18:00</timeSelected>
+						</times>
+					</response>
+				</responses>
+			</value>
+		</entry>
+		<entry>
+			<key>9</key>
+			<value>
+				<id>9</id>
+				<title>Last meeting</title>
+				<creatorEmail>colagarychen@gmail.com</creatorEmail>
+				<creatorName>Po</creatorName>
+				<creationDate>17/05/2016</creationDate>
+				<status>OPEN</status>
+				<location>B04</location>
+				<description>meeting for WSD</description>
+				<timeOptions>
+					<timeOption>25/05/2016 08:00</timeOption>
+					<timeOption>25/05/2016 14:00</timeOption>
+					<timeOption>25/05/2016 19:00</timeOption>
+					<timeOption>26/05/2016 08:00</timeOption>
+					<timeOption>26/05/2016 14:00</timeOption>
+					<timeOption>26/05/2016 19:00</timeOption>
+				</timeOptions>
+				<responses>
+					<response>
+						<name>Raymond</name>
+						<times>
+							<timeSelected>25/05/2016 14:00</timeSelected>
+							<timeSelected>25/05/2016 19:00</timeSelected>
+							<timeSelected>26/05/2016 19:00</timeSelected>
+						</times>
+					</response>
+					<response>
+						<name>Darren</name>
+						<times>
+							<timeSelected>25/05/2016 14:00</timeSelected>
+							<timeSelected>25/05/2016 19:00</timeSelected>
+							<timeSelected>26/05/2016 14:00</timeSelected>
+						</times>
+					</response>
+				</responses>
+			</value>
+		</entry>
+		<entry>
+			<key>10</key>
+			<value>
+				<id>10</id>
+				<title>Group meeting for e-commerce second assignment</title>
+				<creatorEmail>ongkydarma@gmail.com</creatorEmail>
+				<creatorName>ongky96</creatorName>
+				<creationDate>19/05/2016</creationDate>
+				<status>OPEN</status>
+				<location>UTS library level 3</location>
+				<description>Tasks distribution</description>
+				<timeOptions>
+					<timeOption>27/05/2016 18:00</timeOption>
+					<timeOption>28/05/2016 18:00</timeOption>
+					<timeOption>01/06/2016 14:00</timeOption>
+					<timeOption>01/06/2016 18:00</timeOption>
+				</timeOptions>
+				<responses>
+					<response>
+						<name>Jack</name>
+						<times>
+							<timeSelected>27/05/2016 18:00</timeSelected>
+							<timeSelected>01/06/2016 18:00</timeSelected>
+						</times>
+					</response>
+					<response>
+						<name>felixTj</name>
+						<times>
+							<timeSelected>01/06/2016 18:00</timeSelected>
+						</times>
+					</response>
+					<response>
+						<name>Marcus</name>
+						<times>
+							<timeSelected>28/05/2016 18:00</timeSelected>
 						</times>
 					</response>
 				</responses>
