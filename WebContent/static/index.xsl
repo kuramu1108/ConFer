@@ -179,12 +179,15 @@
 
 
 <xsl:template match="polls">
-	<xsl:for-each select="list/entry">
+	<xsl:apply-templates select="list/entry"/>
+</xsl:template>
+
+<xsl:template match="entry">
 	<tr onclick="location.href = 'votePage.jsp?pollID={value/id}';">
 		<td><xsl:value-of select="value/title"/></td>
 		<td><xsl:value-of select="value/creatorName"/></td>
 		<td><xsl:value-of select="value/creationDate"/></td>
 	</tr>
-	</xsl:for-each>
 </xsl:template>
+
 </xsl:stylesheet>

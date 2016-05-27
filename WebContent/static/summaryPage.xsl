@@ -39,6 +39,14 @@
 		<xsl:when test="error">
 			<div class="container com-sm-12">
 				<xsl:apply-templates select="error"/>
+				<xsl:choose>
+					<xsl:when test="status='OPEN'">
+						<form role="form" method="GET" action="votePage.jsp" style="float:left">
+							<input type="hidden" name="pollID" value="{id}"/>
+							<button type="submit" class="btn btn-info">Back to vote page</button>
+						</form>
+					</xsl:when>
+				</xsl:choose>
 			</div>
 		</xsl:when>
 		<xsl:otherwise>
@@ -128,7 +136,7 @@
 						</xsl:when>
 					</xsl:choose>
 					<xsl:choose>
-						<xsl:when test="/confer/login/user and status='OPEN' and /confer/login/user = creatorEmail">
+						<xsl:when test="/confer/login/user and status='OPEN' and /confer/login/user/email = creatorEmail">
 							<form role="form" method="PUT" action="userPage.jsp" style="float:left; margin-left:50px">
 								<input type="hidden" name="state" value="closePoll"/>
 								<input type="hidden" name="pollID" value="{id}"/>
@@ -142,20 +150,10 @@
 		</xsl:choose>
 	</xsl:template>
 	
-	<xsl:template match="timeOptions">
-	<ul>
-		<xsl:for-each select="timeOption">
-			<li>
-				<xsl:value-of select="datetime"/>
-			</li>
-		</xsl:for-each>
-	</ul>
-	</xsl:template>
-	
 	<xsl:template match="timeOption">
 		<tr>
-			<th><xsl:value-of select="datetime"/></th>
-			<th><xsl:value-of select="result"/></th>
+			<td><xsl:value-of select="datetime"/></td>
+			<td><xsl:value-of select="result"/></td>
 		</tr>
 	</xsl:template>
 	
@@ -167,13 +165,31 @@
 	</ul>
 	</xsl:template>
 	
+	<xsl:template match="responer">
+		<li><xsl:value-of select="name"/>: 
+			<xsl:apply-templates/>
+		</li>
+	</xsl:template>
+	
+	<xsl:template match="timesSelected">
+		<ul>
+			<xsl:apply-templates/>
+		</ul>
+	</xsl:template>
+	
+	<xsl:template match="timeSelected">
+		<li><xsl:apply-templates/></li>
+	</xsl:template>
+	
 	<xsl:template match="highestResponses">
 		<br/>Current Highest Response(s):
 		<ul>
-		<xsl:for-each select="highestResponse">
-			<li><xsl:apply-templates/></li>
-		</xsl:for-each>
+			<xsl:apply-templates/>
 		</ul>
+	</xsl:template>
+	
+	<xsl:template match="highestResponse">
+		<li><xsl:apply-templates/></li>
 	</xsl:template>
 	
 	<xsl:template match="error">
