@@ -1,8 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="static/summaryPage.xsl"?>
-<%@ page language="java" contentType="application/xml" pageEncoding="UTF-8" %>
-<%@ page import="java.util.*, com.confer.*"%>
- 
+<%@ page language="java" contentType="application/xml" pageEncoding="UTF-8" %><?xml version="1.0" encoding="UTF-8"?>
+<%@ page import="java.util.*, com.confer.*"%><?xml-stylesheet type="text/xsl" href="static/summaryPage.xsl"?>
 <!-- initialize confer application -->
 <% 
 	String userFilePath = application.getRealPath("WEB-INF/users.xml");
