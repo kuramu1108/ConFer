@@ -57,6 +57,7 @@ public class ConferSoapClient {
 			System.out.println("Test Wrong password");
 			String pollID2 = confer.createPoll("colagarychen@gmail.com", "abcd123", "testTitle", "loc", "des", timeOptions);
 			System.out.println(pollID2);
+			getOpenPolls(confer);
 			// test closePoll
 			System.out.println("\nTest closePoll ID: " + pollID);
 			confer.closePoll("colagarychen@gmail.com", "abcd1234", pollID);

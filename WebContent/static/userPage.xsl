@@ -217,13 +217,15 @@
 
 <xsl:template match="polls">
 	<tbody>
-		<xsl:for-each select="poll">
+		<xsl:apply-templates select="poll"/>   
+ 	</tbody>
+</xsl:template>
+
+<xsl:template match="poll">
 		<tr onclick="location.href = 'summaryPage.jsp?pollID={id}';">
 	    	<td class="col-sm-6"><xsl:value-of select="title"/></td>
 	        <td class="col-sm-3"><xsl:value-of select="creationDate"/></td>
 	        <td class="col-sm-3"><xsl:value-of select="status"/></td>
-	    </tr>	
-		</xsl:for-each>		     
- 	</tbody>
+	    </tr>
 </xsl:template>
 </xsl:stylesheet>

@@ -55,7 +55,7 @@
 				}
 			}
 			
-			if (user.getEmail().equals(poll.getCreatorEmail())) {
+			if (user != null && user.getEmail().equals(poll.getCreatorEmail())) {
 %>
 		<creator></creator>
 <%		
@@ -89,11 +89,22 @@
 		<totalResponse><%=poll.getResponseCount() %></totalResponse>
 		<responsers>
 <%
-			ArrayList<String> responsers = poll.getResponsers();
-			for (String name: responsers)
+			ArrayList<Response> responsers = poll.getResponses();
+			for (Response responser: responsers)
 			{
 %>               
-			<responser><%= name%></responser>     
+			<responser>
+				<name><%= responser.getName() %></name>
+				<timesSelected>
+<%
+				for (String timeSelected: responser.getTimeSelected()) {
+%>
+					<timeSelected><%= timeSelected %></timeSelected>
+<%
+				}
+%>
+				</timesSelected>
+			</responser>
 <%
 			}
 %>	

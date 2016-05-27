@@ -28,7 +28,7 @@ function validateCreatePoll()
 //	    alert("Please fill in all the fields");
 	    $("#error-message").fadeOut('fast').remove();
 	    var html = $("<span id='error-message' style='color:red'>* are required fields</span>");
-        html.appendTo('#description-div');
+        html.appendTo('#timeOptions-div');
 	    return false;
 	}
 	

@@ -171,7 +171,7 @@ ul
 							style="height: 200px"></textarea>
 					</div>
 					<div class="form-group" id="timeOptions-div">
-						<label for="timeOptions">Time Options:</label>
+						<label for="timeOptions">Time Options: <span style='color:red'>*</span></label>
 						<ul id="timeOptions">
 							<li>
 								<div class="form-group">
