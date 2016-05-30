@@ -74,7 +74,8 @@ public class Poll implements Serializable {
 		}
 		for (Response response: responses) {
 			for (String timeSelected: response.getTimeSelected()) {
-				result.replace(timeSelected, result.get(timeSelected) + 1);
+				if (timeOptions.contains(timeSelected))
+					result.replace(timeSelected, result.get(timeSelected) + 1);
 			}
 		}
 		return result;

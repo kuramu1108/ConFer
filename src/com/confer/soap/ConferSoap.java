@@ -113,12 +113,8 @@ public class ConferSoap {
 		try {
 			ConferApplication conferApp = getConferApp();
 			User user = conferApp.getUsers().login(email, password);
-			if (user != null) {
-				for (String idEntry: user.getPollIDs()) {
-					if (idEntry.equals(pollID))
-						conferApp.closePoll(pollID); // only executed if login detail are correct
-				}
-			}
+			if (user != null && user.getPollIDs().contains(pollID))
+				conferApp.closePoll(pollID, user); // only executed if login detail are correct and poll belongs to user
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -27,7 +27,8 @@
 <%
 		}
 	}
-	else {
+	else 
+	{
 		// different operation according to state value, which are passed from the origin page
 		// logout is selected in previous page
 		if (state.equals("logout"))
@@ -58,18 +59,19 @@
 			}
 		}
 		// a poll is being closed in previous page
-		else if (state.equals("closePoll"))
+		else if (state.equals("closePoll") && user != null)
 		{
-			conferApp.closePoll(request.getParameter("pollID"));
+			conferApp.closePoll(request.getParameter("pollID"), user);
 		}
-		else if (state.equals("createPoll"))
+		else if (state.equals("createPoll") && user != null)
 		{
 			String title = request.getParameter("title");
 			String location = request.getParameter("location");
 			String des = request.getParameter("description");
 			String[] timeOptions = request.getParameterValues("timeOption");
 			String creationDate = request.getParameter("creationDate");
-			conferApp.addPoll(title, user.getEmail(), user.getUsername(), creationDate, "OPEN", location, des, new ArrayList<String>(Arrays.asList(timeOptions)));
+			if (title != null && location != null && des != null && timeOptions != null && creationDate != null)
+				conferApp.addPoll(title, user.getEmail(), user.getUsername(), creationDate, "OPEN", location, des, new ArrayList<String>(Arrays.asList(timeOptions)));
 		}
 	}
 %>

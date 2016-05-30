@@ -76,16 +76,18 @@ public class ConferApplication {
 	public void addResponse(String pollID, String voterName, String[] timeOptions) throws Exception
 	{
 		Poll poll = polls.getPoll(pollID);
-		ArrayList<String> times = new ArrayList<String>(Arrays.asList(timeOptions));
-		Response response = new Response(voterName, times);
-		poll.addResponse(response);
-		marshallPolls();
+		if (poll.getStatus().equals("OPEN")) {
+			ArrayList<String> times = new ArrayList<String>(Arrays.asList(timeOptions));
+			Response response = new Response(voterName, times);
+			poll.addResponse(response);
+			marshallPolls();
+		}
 	}
 	
-	public void closePoll(String pollID) throws Exception
+	public void closePoll(String pollID, User user) throws Exception
 	{
 		Poll poll = polls.getPoll(pollID);
-		if (poll != null) 
+		if (poll != null && user.getPollIDs().contains(pollID)) 
 			poll.setStatus("CLOSE");
 		marshallPolls();
 	}
