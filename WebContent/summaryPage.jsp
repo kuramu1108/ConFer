@@ -32,7 +32,7 @@
 	String pollID = (String) request.getParameter("pollID");
 	if (pollID == null) {
 %>
-		<error>poll ID not provided</error>
+		<error>poll not selected</error>
 <%
 	} else {
 		Poll poll = conferApp.getPolls().getPoll(pollID);

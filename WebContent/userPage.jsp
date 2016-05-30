@@ -70,7 +70,8 @@
 			String des = request.getParameter("description");
 			String[] timeOptions = request.getParameterValues("timeOption");
 			String creationDate = request.getParameter("creationDate");
-			conferApp.addPoll(title, user.getEmail(), user.getUsername(), creationDate, "OPEN", location, des, new ArrayList<String>(Arrays.asList(timeOptions)));
+			if (title != null && location != null && des != null && timeOptions != null && creationDate != null)
+				conferApp.addPoll(title, user.getEmail(), user.getUsername(), creationDate, "OPEN", location, des, new ArrayList<String>(Arrays.asList(timeOptions)));
 		}
 	}
 %>

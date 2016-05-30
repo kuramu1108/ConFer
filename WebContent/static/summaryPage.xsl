@@ -193,7 +193,7 @@
 	</xsl:template>
 	
 	<xsl:template match="error">
-		<p>The poll you are looking for is not in the record<br></br>or you haven't select a poll<br></br>ERROR: <xsl:apply-templates/></p>
+		<p>The poll you are looking for is not in the record<br></br>or following error occurs<br></br>ERROR: <xsl:apply-templates/></p>
 	</xsl:template>
 	
 	<xsl:template match="login">
