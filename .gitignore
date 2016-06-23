@@ -3,7 +3,3 @@
 .classpath
 /WebContetnt/WEB-INF/web.xml
 WebContent/WEB-INF/web.xml
-target
-.settings/*
-!.settings/.jsdtscope
-.project
